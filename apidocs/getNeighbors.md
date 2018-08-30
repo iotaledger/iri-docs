@@ -11,6 +11,7 @@ Returns the set of neighbors you are connected with, as well as their activity s
 <Tab language="Python">
 
 <Section type="request">
+```Python
 import urllib2
 import json
 
@@ -29,29 +30,35 @@ returnData = urllib2.urlopen(request).read()
 jsonData = json.loads(returnData)
 
 print jsonData
+```
 </Section>
 
 <Section type="response">
-{"duration": "588", "neighbors": ["{ 
+```json
+{"duration": "66", "neighbors": ["{ 
 "address": "/8.8.8.8:14265", 
-"numberOfAllTransactions": 397, 
-"numberOfInvalidTransactions": 157, 
-"numberOfNewTransactions": 192 
+"numberOfAllTransactions": 848, 
+"numberOfInvalidTransactions": 240, 
+"numberOfNewTransactions": 444 
 }", "{ 
 "address": "/8.8.8.8:14265", 
-"numberOfAllTransactions": 334, 
-"numberOfInvalidTransactions": 331, 
-"numberOfNewTransactions": 32 
+"numberOfAllTransactions": 339, 
+"numberOfInvalidTransactions": 544, 
+"numberOfNewTransactions": 211 
 }"]}
+```
 </Section>
 
 <Section type="error">
+```json
 {"error": "'command' parameter has not been specified"}
+```
 </Section>
 
 <Tab language="NodeJS">
 
 <Section type="request">
+```javascript
 var request = require('request');
 
 var command = {"command": "getNeighbors"}
@@ -72,52 +79,63 @@ request(options, function (error, response, data) {
     console.log(data);
   }
 });
+```
 </Section>
 
 <Section type="response">
-{"duration": "393", "neighbors": ["{ 
+```json
+{"duration": "17", "neighbors": ["{ 
 "address": "/8.8.8.8:14265", 
-"numberOfAllTransactions": 915, 
-"numberOfInvalidTransactions": 432, 
-"numberOfNewTransactions": 285 
+"numberOfAllTransactions": 335, 
+"numberOfInvalidTransactions": 917, 
+"numberOfNewTransactions": 965 
 }", "{ 
 "address": "/8.8.8.8:14265", 
-"numberOfAllTransactions": 52, 
-"numberOfInvalidTransactions": 223, 
-"numberOfNewTransactions": 197 
+"numberOfAllTransactions": 360, 
+"numberOfInvalidTransactions": 599, 
+"numberOfNewTransactions": 373 
 }"]}
+```
 </Section>
 
 <Section type="error">
+```json
 {"error": "'command' parameter has not been specified"}
+```
 </Section>
 
 <Tab language="cURL">
 
 <Section type="request">
+```bash
 curl http://localhost:14265 
 -X POST 
 -H 'Content-Type: application/json' 
 -H 'X-IOTA-API-Version: 1' 
 -d '{"command": "getNeighbors"}'
+```
 </Section>
 
 <Section type="response">
-{"duration": "963", "neighbors": ["{ 
+```json
+{"duration": "3", "neighbors": ["{ 
 "address": "/8.8.8.8:14265", 
-"numberOfAllTransactions": 366, 
-"numberOfInvalidTransactions": 682, 
-"numberOfNewTransactions": 673 
+"numberOfAllTransactions": 920, 
+"numberOfInvalidTransactions": 949, 
+"numberOfNewTransactions": 364 
 }", "{ 
 "address": "/8.8.8.8:14265", 
-"numberOfAllTransactions": 748, 
-"numberOfInvalidTransactions": 678, 
-"numberOfNewTransactions": 722 
+"numberOfAllTransactions": 214, 
+"numberOfInvalidTransactions": 650, 
+"numberOfNewTransactions": 854 
 }"]}
+```
 </Section>
 
 <Section type="error">
+```json
 {"error": "'command' parameter has not been specified"}
+```
 </Section>
 </Tabs<
 

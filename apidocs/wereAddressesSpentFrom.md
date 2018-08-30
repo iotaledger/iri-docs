@@ -10,6 +10,7 @@ Check if a list of addresses was ever spent from, in the current epoch, or in pr
 <Tab language="Python">
 
 <Section type="request">
+```Python
 import urllib2
 import json
 
@@ -28,19 +29,25 @@ returnData = urllib2.urlopen(request).read()
 jsonData = json.loads(returnData)
 
 print jsonData
+```
 </Section>
 
 <Section type="response">
-{"duration": "806", "states": ["true", "true"]}
+```json
+{"duration": "217", "states": ["true", "true"]}
+```
 </Section>
 
 <Section type="error">
+```json
 {"error": "'command' parameter has not been specified"}
+```
 </Section>
 
 <Tab language="NodeJS">
 
 <Section type="request">
+```javascript
 var request = require('request');
 
 var command = {"command": "wereAddressesSpentFrom", "addresses": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
@@ -61,32 +68,43 @@ request(options, function (error, response, data) {
     console.log(data);
   }
 });
+```
 </Section>
 
 <Section type="response">
-{"duration": "585", "states": ["true", "true"]}
+```json
+{"duration": "661", "states": ["true", "true"]}
+```
 </Section>
 
 <Section type="error">
+```json
 {"error": "'command' parameter has not been specified"}
+```
 </Section>
 
 <Tab language="cURL">
 
 <Section type="request">
+```bash
 curl http://localhost:14265 
 -X POST 
 -H 'Content-Type: application/json' 
 -H 'X-IOTA-API-Version: 1' 
 -d '{"command": "wereAddressesSpentFrom", "addresses": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}'
+```
 </Section>
 
 <Section type="response">
-{"duration": "956", "states": ["true", "true"]}
+```json
+{"duration": "138", "states": ["true", "true"]}
+```
 </Section>
 
 <Section type="error">
+```json
 {"error": "'command' parameter has not been specified"}
+```
 </Section>
 </Tabs<
 

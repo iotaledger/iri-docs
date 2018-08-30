@@ -15,6 +15,7 @@ Find the transactions which match the specified input and return.
 <Tab language="Python">
 
 <Section type="request">
+```Python
 import urllib2
 import json
 
@@ -33,19 +34,25 @@ returnData = urllib2.urlopen(request).read()
 jsonData = json.loads(returnData)
 
 print jsonData
+```
 </Section>
 
 <Section type="response">
-{"duration": "564", "hashes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+```json
+{"duration": "459", "hashes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+```
 </Section>
 
 <Section type="error">
+```json
 {"error": "'command' parameter has not been specified"}
+```
 </Section>
 
 <Tab language="NodeJS">
 
 <Section type="request">
+```javascript
 var request = require('request');
 
 var command = {"command": "findTransactions", "request": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
@@ -66,32 +73,43 @@ request(options, function (error, response, data) {
     console.log(data);
   }
 });
+```
 </Section>
 
 <Section type="response">
-{"duration": "755", "hashes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+```json
+{"duration": "211", "hashes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+```
 </Section>
 
 <Section type="error">
+```json
 {"error": "'command' parameter has not been specified"}
+```
 </Section>
 
 <Tab language="cURL">
 
 <Section type="request">
+```bash
 curl http://localhost:14265 
 -X POST 
 -H 'Content-Type: application/json' 
 -H 'X-IOTA-API-Version: 1' 
 -d '{"command": "findTransactions", "request": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}'
+```
 </Section>
 
 <Section type="response">
-{"duration": "694", "hashes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+```json
+{"duration": "486", "hashes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+```
 </Section>
 
 <Section type="error">
+```json
 {"error": "'command' parameter has not been specified"}
+```
 </Section>
 </Tabs<
 

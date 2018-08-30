@@ -15,6 +15,7 @@ Get the inclusion states of a set of transactions.
 <Tab language="Python">
 
 <Section type="request">
+```Python
 import urllib2
 import json
 
@@ -33,19 +34,25 @@ returnData = urllib2.urlopen(request).read()
 jsonData = json.loads(returnData)
 
 print jsonData
+```
 </Section>
 
 <Section type="response">
-{"duration": "438", "states": ["true", "true"]}
+```json
+{"duration": "11", "states": ["true", "true"]}
+```
 </Section>
 
 <Section type="error">
+```json
 {"error": "'command' parameter has not been specified"}
+```
 </Section>
 
 <Tab language="NodeJS">
 
 <Section type="request">
+```javascript
 var request = require('request');
 
 var command = {"command": "getInclusionStates", "transactions": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"], "tips": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
@@ -66,32 +73,43 @@ request(options, function (error, response, data) {
     console.log(data);
   }
 });
+```
 </Section>
 
 <Section type="response">
-{"duration": "946", "states": ["true", "true"]}
+```json
+{"duration": "441", "states": ["true", "true"]}
+```
 </Section>
 
 <Section type="error">
+```json
 {"error": "'command' parameter has not been specified"}
+```
 </Section>
 
 <Tab language="cURL">
 
 <Section type="request">
+```bash
 curl http://localhost:14265 
 -X POST 
 -H 'Content-Type: application/json' 
 -H 'X-IOTA-API-Version: 1' 
 -d '{"command": "getInclusionStates", "transactions": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"], "tips": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}'
+```
 </Section>
 
 <Section type="response">
-{"duration": "600", "states": ["true", "true"]}
+```json
+{"duration": "13", "states": ["true", "true"]}
+```
 </Section>
 
 <Section type="error">
+```json
 {"error": "'command' parameter has not been specified"}
+```
 </Section>
 </Tabs<
 

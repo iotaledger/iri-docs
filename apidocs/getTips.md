@@ -10,6 +10,7 @@ Returns the list of tips.
 <Tab language="Python">
 
 <Section type="request">
+```Python
 import urllib2
 import json
 
@@ -28,19 +29,25 @@ returnData = urllib2.urlopen(request).read()
 jsonData = json.loads(returnData)
 
 print jsonData
+```
 </Section>
 
 <Section type="response">
-{"duration": "213", "hashes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+```json
+{"duration": "666", "hashes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+```
 </Section>
 
 <Section type="error">
+```json
 {"error": "'command' parameter has not been specified"}
+```
 </Section>
 
 <Tab language="NodeJS">
 
 <Section type="request">
+```javascript
 var request = require('request');
 
 var command = {"command": "getTips"}
@@ -61,32 +68,43 @@ request(options, function (error, response, data) {
     console.log(data);
   }
 });
+```
 </Section>
 
 <Section type="response">
-{"duration": "683", "hashes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+```json
+{"duration": "303", "hashes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+```
 </Section>
 
 <Section type="error">
+```json
 {"error": "'command' parameter has not been specified"}
+```
 </Section>
 
 <Tab language="cURL">
 
 <Section type="request">
+```bash
 curl http://localhost:14265 
 -X POST 
 -H 'Content-Type: application/json' 
 -H 'X-IOTA-API-Version: 1' 
 -d '{"command": "getTips"}'
+```
 </Section>
 
 <Section type="response">
-{"duration": "53", "hashes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+```json
+{"duration": "934", "hashes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+```
 </Section>
 
 <Section type="error">
+```json
 {"error": "'command' parameter has not been specified"}
+```
 </Section>
 </Tabs<
 

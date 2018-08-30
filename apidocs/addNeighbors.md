@@ -15,6 +15,7 @@ Temporarily add a list of neighbors to your node.
 <Tab language="Python">
 
 <Section type="request">
+```Python
 import urllib2
 import json
 
@@ -33,19 +34,25 @@ returnData = urllib2.urlopen(request).read()
 jsonData = json.loads(returnData)
 
 print jsonData
+```
 </Section>
 
 <Section type="response">
-{"duration": "497", "addedNeighbors": "238"}
+```json
+{"duration": "465", "addedNeighbors": "461"}
+```
 </Section>
 
 <Section type="error">
+```json
 {"error": "'command' parameter has not been specified"}
+```
 </Section>
 
 <Tab language="NodeJS">
 
 <Section type="request">
+```javascript
 var request = require('request');
 
 var command = {"command": "addNeighbors", "uris": ["udp://8.8.8.8:14265", "udp://8.8.8.8:14265"]}
@@ -66,32 +73,43 @@ request(options, function (error, response, data) {
     console.log(data);
   }
 });
+```
 </Section>
 
 <Section type="response">
-{"duration": "583", "addedNeighbors": "522"}
+```json
+{"duration": "857", "addedNeighbors": "348"}
+```
 </Section>
 
 <Section type="error">
+```json
 {"error": "'command' parameter has not been specified"}
+```
 </Section>
 
 <Tab language="cURL">
 
 <Section type="request">
+```bash
 curl http://localhost:14265 
 -X POST 
 -H 'Content-Type: application/json' 
 -H 'X-IOTA-API-Version: 1' 
 -d '{"command": "addNeighbors", "uris": ["udp://8.8.8.8:14265", "udp://8.8.8.8:14265"]}'
+```
 </Section>
 
 <Section type="response">
-{"duration": "612", "addedNeighbors": "742"}
+```json
+{"duration": "424", "addedNeighbors": "64"}
+```
 </Section>
 
 <Section type="error">
+```json
 {"error": "'command' parameter has not been specified"}
+```
 </Section>
 </Tabs<
 

@@ -1,7 +1,7 @@
 
 ---
 ### [getNeighbors](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L708)
- [AbstractResponse](/javadoc/com/iota/iri/service/dto/abstractresponse/) getNeighborsStatement()
+ [AbstractResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) getNeighborsStatement()
 
 Returns the set of neighbors you are connected with, as well as their activity statistics (or counters). 
  The activity counters are reset after restarting IRI.
@@ -11,6 +11,7 @@ Returns the set of neighbors you are connected with, as well as their activity s
 <Tab language="Python">
 
 <Section type="request">
+
 ```Python
 import urllib2
 import json
@@ -34,22 +35,24 @@ print jsonData
 </Section>
 
 <Section type="response">
+
 ```json
-{"duration": "66", "neighbors": ["{ 
+{"duration": "71", "neighbors": ["{ 
 "address": "/8.8.8.8:14265", 
-"numberOfAllTransactions": 848, 
-"numberOfInvalidTransactions": 240, 
-"numberOfNewTransactions": 444 
+"numberOfAllTransactions": 654, 
+"numberOfInvalidTransactions": 249, 
+"numberOfNewTransactions": 142 
 }", "{ 
 "address": "/8.8.8.8:14265", 
-"numberOfAllTransactions": 339, 
-"numberOfInvalidTransactions": 544, 
-"numberOfNewTransactions": 211 
+"numberOfAllTransactions": 570, 
+"numberOfInvalidTransactions": 141, 
+"numberOfNewTransactions": 256 
 }"]}
 ```
 </Section>
 
 <Section type="error">
+
 ```json
 {"error": "'command' parameter has not been specified"}
 ```
@@ -58,6 +61,7 @@ print jsonData
 <Tab language="NodeJS">
 
 <Section type="request">
+
 ```javascript
 var request = require('request');
 
@@ -83,22 +87,24 @@ request(options, function (error, response, data) {
 </Section>
 
 <Section type="response">
+
 ```json
-{"duration": "17", "neighbors": ["{ 
+{"duration": "941", "neighbors": ["{ 
 "address": "/8.8.8.8:14265", 
-"numberOfAllTransactions": 335, 
-"numberOfInvalidTransactions": 917, 
-"numberOfNewTransactions": 965 
+"numberOfAllTransactions": 889, 
+"numberOfInvalidTransactions": 246, 
+"numberOfNewTransactions": 835 
 }", "{ 
 "address": "/8.8.8.8:14265", 
-"numberOfAllTransactions": 360, 
-"numberOfInvalidTransactions": 599, 
-"numberOfNewTransactions": 373 
+"numberOfAllTransactions": 104, 
+"numberOfInvalidTransactions": 512, 
+"numberOfNewTransactions": 989 
 }"]}
 ```
 </Section>
 
 <Section type="error">
+
 ```json
 {"error": "'command' parameter has not been specified"}
 ```
@@ -107,6 +113,7 @@ request(options, function (error, response, data) {
 <Tab language="cURL">
 
 <Section type="request">
+
 ```bash
 curl http://localhost:14265 
 -X POST 
@@ -117,22 +124,24 @@ curl http://localhost:14265
 </Section>
 
 <Section type="response">
+
 ```json
-{"duration": "3", "neighbors": ["{ 
+{"duration": "65", "neighbors": ["{ 
 "address": "/8.8.8.8:14265", 
-"numberOfAllTransactions": 920, 
-"numberOfInvalidTransactions": 949, 
-"numberOfNewTransactions": 364 
+"numberOfAllTransactions": 401, 
+"numberOfInvalidTransactions": 676, 
+"numberOfNewTransactions": 7 
 }", "{ 
 "address": "/8.8.8.8:14265", 
-"numberOfAllTransactions": 214, 
-"numberOfInvalidTransactions": 650, 
-"numberOfNewTransactions": 854 
+"numberOfAllTransactions": 427, 
+"numberOfInvalidTransactions": 811, 
+"numberOfNewTransactions": 941 
 }"]}
 ```
 </Section>
 
 <Section type="error">
+
 ```json
 {"error": "'command' parameter has not been specified"}
 ```
@@ -145,7 +154,7 @@ curl http://localhost:14265
 
 ***
 
-Returns [GetNeighborsResponse](/javadoc/com/iota/iri/service/dto/getneighborsresponse/)
+Returns [GetNeighborsResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/GetNeighborsResponse.java)
 
 |Return | Description |
 |--|--|

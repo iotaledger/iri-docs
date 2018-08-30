@@ -11,6 +11,7 @@ Broadcast a list of transactions to all neighbors.
 <Tab language="Python">
 
 <Section type="request">
+
 ```Python
 import urllib2
 import json
@@ -34,12 +35,14 @@ print jsonData
 </Section>
 
 <Section type="response">
+
 ```json
-{"duration": 105}
+{"duration": 731}
 ```
 </Section>
 
 <Section type="error">
+
 ```json
 {"error": "'command' parameter has not been specified"}
 ```
@@ -48,6 +51,7 @@ print jsonData
 <Tab language="NodeJS">
 
 <Section type="request">
+
 ```javascript
 var request = require('request');
 
@@ -73,12 +77,14 @@ request(options, function (error, response, data) {
 </Section>
 
 <Section type="response">
+
 ```json
-{"duration": 686}
+{"duration": 483}
 ```
 </Section>
 
 <Section type="error">
+
 ```json
 {"error": "'command' parameter has not been specified"}
 ```
@@ -87,6 +93,7 @@ request(options, function (error, response, data) {
 <Tab language="cURL">
 
 <Section type="request">
+
 ```bash
 curl http://localhost:14265 
 -X POST 
@@ -97,12 +104,14 @@ curl http://localhost:14265
 </Section>
 
 <Section type="response">
+
 ```json
-{"duration": 839}
+{"duration": 674}
 ```
 </Section>
 
 <Section type="error">
+
 ```json
 {"error": "'command' parameter has not been specified"}
 ```

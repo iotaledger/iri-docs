@@ -15,6 +15,7 @@ Tip selection which returns `trunkTransaction` and `branchTransaction`.
 <Tab language="Python">
 
 <Section type="request">
+
 ```Python
 import urllib2
 import json
@@ -38,12 +39,14 @@ print jsonData
 </Section>
 
 <Section type="response">
+
 ```json
-{"duration": "716", "branchTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "trunkTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"}
+{"duration": "160", "branchTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "trunkTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"}
 ```
 </Section>
 
 <Section type="error">
+
 ```json
 {"error": "'command' parameter has not been specified"}
 ```
@@ -52,6 +55,7 @@ print jsonData
 <Tab language="NodeJS">
 
 <Section type="request">
+
 ```javascript
 var request = require('request');
 
@@ -77,12 +81,14 @@ request(options, function (error, response, data) {
 </Section>
 
 <Section type="response">
+
 ```json
-{"duration": "478", "branchTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "trunkTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"}
+{"duration": "621", "branchTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "trunkTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"}
 ```
 </Section>
 
 <Section type="error">
+
 ```json
 {"error": "'command' parameter has not been specified"}
 ```
@@ -91,6 +97,7 @@ request(options, function (error, response, data) {
 <Tab language="cURL">
 
 <Section type="request">
+
 ```bash
 curl http://localhost:14265 
 -X POST 
@@ -101,12 +108,14 @@ curl http://localhost:14265
 </Section>
 
 <Section type="response">
+
 ```json
-{"duration": "332", "branchTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "trunkTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"}
+{"duration": "387", "branchTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "trunkTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"}
 ```
 </Section>
 
 <Section type="error">
+
 ```json
 {"error": "'command' parameter has not been specified"}
 ```
@@ -124,7 +133,7 @@ curl http://localhost:14265
 
 ***
 
-Returns [GetTransactionsToApproveResponse](/javadoc/com/iota/iri/service/dto/gettransactionstoapproveresponse/)
+Returns [GetTransactionsToApproveResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/GetTransactionsToApproveResponse.java)
 
 |Return | Description |
 |--|--|

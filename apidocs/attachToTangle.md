@@ -1,7 +1,7 @@
 
 ---
 ### [attachToTangle](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L1073)
- java.util.List attachToTangleStatement([Hash](/javadoc/com/iota/iri/model/hash/) trunkTransaction, [Hash](/javadoc/com/iota/iri/model/hash/) branchTransaction, int minWeightMagnitude, java.util.List trytes)
+ java.util.List attachToTangleStatement([Hash](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/model/Hash.java) trunkTransaction, [Hash](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/model/Hash.java) branchTransaction, int minWeightMagnitude, java.util.List trytes)
 
 Attaches the specified transactions (trytes) to the Tangle by doing Proof of Work. 
  You need to supply `branchTransaction` as well as `trunkTransaction` (the tips which you're going to validate and reference with this transaction) - both of which you'll get through the `getTransactionsToApprove` API call.
@@ -15,6 +15,7 @@ Attaches the specified transactions (trytes) to the Tangle by doing Proof of Wor
 <Tab language="Python">
 
 <Section type="request">
+
 ```Python
 import urllib2
 import json
@@ -38,12 +39,14 @@ print jsonData
 </Section>
 
 <Section type="response">
+
 ```json
-{"duration": 146, "trytes": "trytes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+{"duration": 163, "trytes": "trytes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
 ```
 </Section>
 
 <Section type="error">
+
 ```json
 {"error": "'command' parameter has not been specified"}
 ```
@@ -52,6 +55,7 @@ print jsonData
 <Tab language="NodeJS">
 
 <Section type="request">
+
 ```javascript
 var request = require('request');
 
@@ -77,12 +81,14 @@ request(options, function (error, response, data) {
 </Section>
 
 <Section type="response">
+
 ```json
-{"duration": 124, "trytes": "trytes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+{"duration": 938, "trytes": "trytes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
 ```
 </Section>
 
 <Section type="error">
+
 ```json
 {"error": "'command' parameter has not been specified"}
 ```
@@ -91,6 +97,7 @@ request(options, function (error, response, data) {
 <Tab language="cURL">
 
 <Section type="request">
+
 ```bash
 curl http://localhost:14265 
 -X POST 
@@ -101,12 +108,14 @@ curl http://localhost:14265
 </Section>
 
 <Section type="response">
+
 ```json
-{"duration": 872, "trytes": "trytes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+{"duration": 836, "trytes": "trytes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
 ```
 </Section>
 
 <Section type="error">
+
 ```json
 {"error": "'command' parameter has not been specified"}
 ```

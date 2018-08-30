@@ -11,6 +11,7 @@ Store transactions into the local storage.
 <Tab language="Python">
 
 <Section type="request">
+
 ```Python
 import urllib2
 import json
@@ -34,12 +35,14 @@ print jsonData
 </Section>
 
 <Section type="response">
+
 ```json
-{"duration": 41}
+{"duration": 275}
 ```
 </Section>
 
 <Section type="error">
+
 ```json
 {"error": "'command' parameter has not been specified"}
 ```
@@ -48,6 +51,7 @@ print jsonData
 <Tab language="NodeJS">
 
 <Section type="request">
+
 ```javascript
 var request = require('request');
 
@@ -73,12 +77,14 @@ request(options, function (error, response, data) {
 </Section>
 
 <Section type="response">
+
 ```json
-{"duration": 113}
+{"duration": 876}
 ```
 </Section>
 
 <Section type="error">
+
 ```json
 {"error": "'command' parameter has not been specified"}
 ```
@@ -87,6 +93,7 @@ request(options, function (error, response, data) {
 <Tab language="cURL">
 
 <Section type="request">
+
 ```bash
 curl http://localhost:14265 
 -X POST 
@@ -97,12 +104,14 @@ curl http://localhost:14265
 </Section>
 
 <Section type="response">
+
 ```json
-{"duration": 264}
+{"duration": 187}
 ```
 </Section>
 
 <Section type="error">
+
 ```json
 {"error": "'command' parameter has not been specified"}
 ```

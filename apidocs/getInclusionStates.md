@@ -1,7 +1,7 @@
 
 ---
 ### [getInclusionStates](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L750)
- [AbstractResponse](/javadoc/com/iota/iri/service/dto/abstractresponse/) getInclusionStatesStatement(java.util.List transactions, java.util.List tips)
+ [AbstractResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) getInclusionStatesStatement(java.util.List transactions, java.util.List tips)
 
 Get the inclusion states of a set of transactions. 
  This is for determining if a transaction was accepted and confirmed by the network or not. 
@@ -15,6 +15,7 @@ Get the inclusion states of a set of transactions.
 <Tab language="Python">
 
 <Section type="request">
+
 ```Python
 import urllib2
 import json
@@ -38,12 +39,14 @@ print jsonData
 </Section>
 
 <Section type="response">
+
 ```json
-{"duration": "11", "states": ["true", "true"]}
+{"duration": "434", "states": ["true", "true"]}
 ```
 </Section>
 
 <Section type="error">
+
 ```json
 {"error": "'command' parameter has not been specified"}
 ```
@@ -52,6 +55,7 @@ print jsonData
 <Tab language="NodeJS">
 
 <Section type="request">
+
 ```javascript
 var request = require('request');
 
@@ -77,12 +81,14 @@ request(options, function (error, response, data) {
 </Section>
 
 <Section type="response">
+
 ```json
-{"duration": "441", "states": ["true", "true"]}
+{"duration": "339", "states": ["true", "true"]}
 ```
 </Section>
 
 <Section type="error">
+
 ```json
 {"error": "'command' parameter has not been specified"}
 ```
@@ -91,6 +97,7 @@ request(options, function (error, response, data) {
 <Tab language="cURL">
 
 <Section type="request">
+
 ```bash
 curl http://localhost:14265 
 -X POST 
@@ -101,12 +108,14 @@ curl http://localhost:14265
 </Section>
 
 <Section type="response">
+
 ```json
-{"duration": "13", "states": ["true", "true"]}
+{"duration": "232", "states": ["true", "true"]}
 ```
 </Section>
 
 <Section type="error">
+
 ```json
 {"error": "'command' parameter has not been specified"}
 ```
@@ -124,7 +133,7 @@ curl http://localhost:14265
 
 ***
 
-Returns [GetInclusionStatesResponse](/javadoc/com/iota/iri/service/dto/getinclusionstatesresponse/)
+Returns [GetInclusionStatesResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/GetInclusionStatesResponse.java)
 
 |Return | Description |
 |--|--|

@@ -1,7 +1,7 @@
 
 ---
 ### [removeNeighbors](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L576)
- [AbstractResponse](/javadoc/com/iota/iri/service/dto/abstractresponse/) removeNeighborsStatement(java.util.List uris)
+ [AbstractResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) removeNeighborsStatement(java.util.List uris)
 
 Temporarily removes a list of neighbors from your node.
  The added neighbors will be added again after relaunching IRI. 
@@ -17,6 +17,7 @@ Temporarily removes a list of neighbors from your node.
 <Tab language="Python">
 
 <Section type="request">
+
 ```Python
 import urllib2
 import json
@@ -40,12 +41,14 @@ print jsonData
 </Section>
 
 <Section type="response">
+
 ```json
-{"duration": "169", "removedNeighbors": "671"}
+{"duration": "727", "removedNeighbors": "669"}
 ```
 </Section>
 
 <Section type="error">
+
 ```json
 {"error": "'command' parameter has not been specified"}
 ```
@@ -54,6 +57,7 @@ print jsonData
 <Tab language="NodeJS">
 
 <Section type="request">
+
 ```javascript
 var request = require('request');
 
@@ -79,12 +83,14 @@ request(options, function (error, response, data) {
 </Section>
 
 <Section type="response">
+
 ```json
-{"duration": "470", "removedNeighbors": "744"}
+{"duration": "260", "removedNeighbors": "800"}
 ```
 </Section>
 
 <Section type="error">
+
 ```json
 {"error": "'command' parameter has not been specified"}
 ```
@@ -93,6 +99,7 @@ request(options, function (error, response, data) {
 <Tab language="cURL">
 
 <Section type="request">
+
 ```bash
 curl http://localhost:14265 
 -X POST 
@@ -103,12 +110,14 @@ curl http://localhost:14265
 </Section>
 
 <Section type="response">
+
 ```json
-{"duration": "901", "removedNeighbors": "263"}
+{"duration": "307", "removedNeighbors": "260"}
 ```
 </Section>
 
 <Section type="error">
+
 ```json
 {"error": "'command' parameter has not been specified"}
 ```
@@ -125,7 +134,7 @@ curl http://localhost:14265
 
 ***
 
-Returns [RemoveNeighborsResponse](/javadoc/com/iota/iri/service/dto/removeneighborsresponse/)
+Returns [RemoveNeighborsResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/RemoveNeighborsResponse.java)
 
 |Return | Description |
 |--|--|

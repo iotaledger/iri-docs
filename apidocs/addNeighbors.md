@@ -1,7 +1,7 @@
 
 ---
 ### [addNeighbors](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L1151)
- [AbstractResponse](/javadoc/com/iota/iri/service/dto/abstractresponse/) addNeighborsStatement(java.util.List uris)
+ [AbstractResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) addNeighborsStatement(java.util.List uris)
 
 Temporarily add a list of neighbors to your node. 
  The added neighbors will be removed after relaunching IRI. 
@@ -15,6 +15,7 @@ Temporarily add a list of neighbors to your node.
 <Tab language="Python">
 
 <Section type="request">
+
 ```Python
 import urllib2
 import json
@@ -38,12 +39,14 @@ print jsonData
 </Section>
 
 <Section type="response">
+
 ```json
-{"duration": "465", "addedNeighbors": "461"}
+{"duration": "349", "addedNeighbors": "660"}
 ```
 </Section>
 
 <Section type="error">
+
 ```json
 {"error": "'command' parameter has not been specified"}
 ```
@@ -52,6 +55,7 @@ print jsonData
 <Tab language="NodeJS">
 
 <Section type="request">
+
 ```javascript
 var request = require('request');
 
@@ -77,12 +81,14 @@ request(options, function (error, response, data) {
 </Section>
 
 <Section type="response">
+
 ```json
-{"duration": "857", "addedNeighbors": "348"}
+{"duration": "727", "addedNeighbors": "792"}
 ```
 </Section>
 
 <Section type="error">
+
 ```json
 {"error": "'command' parameter has not been specified"}
 ```
@@ -91,6 +97,7 @@ request(options, function (error, response, data) {
 <Tab language="cURL">
 
 <Section type="request">
+
 ```bash
 curl http://localhost:14265 
 -X POST 
@@ -101,12 +108,14 @@ curl http://localhost:14265
 </Section>
 
 <Section type="response">
+
 ```json
-{"duration": "424", "addedNeighbors": "64"}
+{"duration": "259", "addedNeighbors": "297"}
 ```
 </Section>
 
 <Section type="error">
+
 ```json
 {"error": "'command' parameter has not been specified"}
 ```
@@ -123,7 +132,7 @@ curl http://localhost:14265
 
 ***
 
-Returns [AddedNeighborsResponse](/javadoc/com/iota/iri/service/dto/addedneighborsresponse/)
+Returns [AddedNeighborsResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/AddedNeighborsResponse.java)
 
 |Return | Description |
 |--|--|

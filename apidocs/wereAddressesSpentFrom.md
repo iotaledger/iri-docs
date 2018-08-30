@@ -1,7 +1,7 @@
 
 ---
 ### [wereAddressesSpentFrom](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L380)
- [AbstractResponse](/javadoc/com/iota/iri/service/dto/abstractresponse/) wereAddressesSpentFromStatement(java.util.List addresses)
+ [AbstractResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) wereAddressesSpentFromStatement(java.util.List addresses)
 
 Check if a list of addresses was ever spent from, in the current epoch, or in previous epochs.
 
@@ -10,6 +10,7 @@ Check if a list of addresses was ever spent from, in the current epoch, or in pr
 <Tab language="Python">
 
 <Section type="request">
+
 ```Python
 import urllib2
 import json
@@ -33,12 +34,14 @@ print jsonData
 </Section>
 
 <Section type="response">
+
 ```json
-{"duration": "217", "states": ["true", "true"]}
+{"duration": "742", "states": ["true", "true"]}
 ```
 </Section>
 
 <Section type="error">
+
 ```json
 {"error": "'command' parameter has not been specified"}
 ```
@@ -47,6 +50,7 @@ print jsonData
 <Tab language="NodeJS">
 
 <Section type="request">
+
 ```javascript
 var request = require('request');
 
@@ -72,12 +76,14 @@ request(options, function (error, response, data) {
 </Section>
 
 <Section type="response">
+
 ```json
-{"duration": "661", "states": ["true", "true"]}
+{"duration": "335", "states": ["true", "true"]}
 ```
 </Section>
 
 <Section type="error">
+
 ```json
 {"error": "'command' parameter has not been specified"}
 ```
@@ -86,6 +92,7 @@ request(options, function (error, response, data) {
 <Tab language="cURL">
 
 <Section type="request">
+
 ```bash
 curl http://localhost:14265 
 -X POST 
@@ -96,12 +103,14 @@ curl http://localhost:14265
 </Section>
 
 <Section type="response">
+
 ```json
-{"duration": "138", "states": ["true", "true"]}
+{"duration": "820", "states": ["true", "true"]}
 ```
 </Section>
 
 <Section type="error">
+
 ```json
 {"error": "'command' parameter has not been specified"}
 ```
@@ -118,7 +127,7 @@ curl http://localhost:14265
 
 ***
 
-Returns [wereAddressesSpentFrom](/javadoc/com/iota/iri/service/dto/wereaddressesspentfrom/)
+Returns [wereAddressesSpentFrom](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/wereAddressesSpentFrom.java)
 
 |Return | Description |
 |--|--|

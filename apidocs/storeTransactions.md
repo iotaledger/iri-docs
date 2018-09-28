@@ -1,9 +1,9 @@
 
 ---
-### [storeTransactions](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L681)
+### [storeTransactions](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L670)
  void storeTransactionsStatement(java.util.List trytes)
 
-Store transactions into the local storage. 
+Store transactions into the local storage.
  The trytes to be used for this call are returned by `attachToTangle`.
 
 <Tabs> 
@@ -37,7 +37,7 @@ print jsonData
 <Section type="response">
 
 ```json
-{"duration": 275}
+{"duration": 25}
 ```
 </Section>
 
@@ -79,7 +79,7 @@ request(options, function (error, response, data) {
 <Section type="response">
 
 ```json
-{"duration": 876}
+{"duration": 796}
 ```
 </Section>
 
@@ -106,7 +106,7 @@ curl http://localhost:14265
 <Section type="response">
 
 ```json
-{"duration": 187}
+{"duration": 29}
 ```
 </Section>
 
@@ -116,7 +116,7 @@ curl http://localhost:14265
 {"error": "'command' parameter has not been specified"}
 ```
 </Section>
-</Tabs<
+</Tabs>
 
 
 

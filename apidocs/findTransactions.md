@@ -1,13 +1,13 @@
 
 ---
-### [findTransactions](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L857)
+### [findTransactions](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L846)
  [AbstractResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) findTransactionsStatement(java.util.Map request)
 
-Find the transactions which match the specified input and return. 
- All input values are lists, for which a list of return values (transaction hashes), in the same order, is returned for all individual elements. 
- The input fields can either be `bundles`, `addresses`, `tags` or `approvees`. 
+Find the transactions which match the specified input and return.
+ All input values are lists, for which a list of return values (transaction hashes), in the same order, is returned for all individual elements.
+ The input fields can either be `bundles`, `addresses`, `tags` or `approvees`.
  **Using multiple of these input fields returns the intersection of the values.**
- 
+
  Returns an {@link com.iota.iri.service.dto.ErrorResponse} if more than maxFindTxs was found
 
 <Tabs> 
@@ -41,7 +41,7 @@ print jsonData
 <Section type="response">
 
 ```json
-{"duration": "451", "hashes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+{"duration": "506", "hashes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
 ```
 </Section>
 
@@ -83,7 +83,7 @@ request(options, function (error, response, data) {
 <Section type="response">
 
 ```json
-{"duration": "352", "hashes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+{"duration": "740", "hashes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
 ```
 </Section>
 
@@ -110,7 +110,7 @@ curl http://localhost:14265
 <Section type="response">
 
 ```json
-{"duration": "797", "hashes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+{"duration": "858", "hashes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
 ```
 </Section>
 
@@ -120,7 +120,7 @@ curl http://localhost:14265
 {"error": "'command' parameter has not been specified"}
 ```
 </Section>
-</Tabs<
+</Tabs>
 
 
 

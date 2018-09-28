@@ -1,13 +1,13 @@
 
 ---
-### [getTransactionsToApprove](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L641)
+### [getTransactionsToApprove](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L630)
  java.util.List getTransactionsToApproveStatement(int depth, java.util.Optional reference)
 
-Tip selection which returns `trunkTransaction` and `branchTransaction`. 
- The input value `depth` determines how many milestones to go back for finding the transactions to approve. 
- The higher your `depth` value, the more work you have to do as you are confirming more transactions. 
- If the `depth` is too large (usually above 15, it depends on the node's configuration) an error will be returned. 
- The `reference` is an optional hash of a transaction you want to approve. 
+Tip selection which returns `trunkTransaction` and `branchTransaction`.
+ The input value `depth` determines how many milestones to go back for finding the transactions to approve.
+ The higher your `depth` value, the more work you have to do as you are confirming more transactions.
+ If the `depth` is too large (usually above 15, it depends on the node's configuration) an error will be returned.
+ The `reference` is an optional hash of a transaction you want to approve.
  If it can't be found at the specified `depth` then an error will be returned.
 
 <Tabs> 
@@ -41,7 +41,7 @@ print jsonData
 <Section type="response">
 
 ```json
-{"duration": "160", "branchTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "trunkTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"}
+{"duration": "82", "branchTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "trunkTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"}
 ```
 </Section>
 
@@ -83,7 +83,7 @@ request(options, function (error, response, data) {
 <Section type="response">
 
 ```json
-{"duration": "621", "branchTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "trunkTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"}
+{"duration": "775", "branchTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "trunkTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"}
 ```
 </Section>
 
@@ -110,7 +110,7 @@ curl http://localhost:14265
 <Section type="response">
 
 ```json
-{"duration": "387", "branchTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "trunkTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"}
+{"duration": "322", "branchTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "trunkTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"}
 ```
 </Section>
 
@@ -120,7 +120,7 @@ curl http://localhost:14265
 {"error": "'command' parameter has not been specified"}
 ```
 </Section>
-</Tabs<
+</Tabs>
 
 
 

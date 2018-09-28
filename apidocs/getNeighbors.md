@@ -1,9 +1,9 @@
 
 ---
-### [getNeighbors](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L708)
+### [getNeighbors](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L697)
  [AbstractResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) getNeighborsStatement()
 
-Returns the set of neighbors you are connected with, as well as their activity statistics (or counters). 
+Returns the set of neighbors you are connected with, as well as their activity statistics (or counters).
  The activity counters are reset after restarting IRI.
 
 <Tabs> 
@@ -37,16 +37,16 @@ print jsonData
 <Section type="response">
 
 ```json
-{"duration": "71", "neighbors": ["{ 
+{"duration": "795", "neighbors": ["{ 
 "address": "/8.8.8.8:14265", 
-"numberOfAllTransactions": 654, 
-"numberOfInvalidTransactions": 249, 
-"numberOfNewTransactions": 142 
+"numberOfAllTransactions": 859, 
+"numberOfInvalidTransactions": 256, 
+"numberOfNewTransactions": 472 
 }", "{ 
 "address": "/8.8.8.8:14265", 
-"numberOfAllTransactions": 570, 
-"numberOfInvalidTransactions": 141, 
-"numberOfNewTransactions": 256 
+"numberOfAllTransactions": 84, 
+"numberOfInvalidTransactions": 90, 
+"numberOfNewTransactions": 482 
 }"]}
 ```
 </Section>
@@ -89,16 +89,16 @@ request(options, function (error, response, data) {
 <Section type="response">
 
 ```json
-{"duration": "941", "neighbors": ["{ 
+{"duration": "738", "neighbors": ["{ 
 "address": "/8.8.8.8:14265", 
-"numberOfAllTransactions": 889, 
-"numberOfInvalidTransactions": 246, 
-"numberOfNewTransactions": 835 
+"numberOfAllTransactions": 118, 
+"numberOfInvalidTransactions": 665, 
+"numberOfNewTransactions": 176 
 }", "{ 
 "address": "/8.8.8.8:14265", 
-"numberOfAllTransactions": 104, 
-"numberOfInvalidTransactions": 512, 
-"numberOfNewTransactions": 989 
+"numberOfAllTransactions": 266, 
+"numberOfInvalidTransactions": 670, 
+"numberOfNewTransactions": 759 
 }"]}
 ```
 </Section>
@@ -126,16 +126,16 @@ curl http://localhost:14265
 <Section type="response">
 
 ```json
-{"duration": "65", "neighbors": ["{ 
+{"duration": "688", "neighbors": ["{ 
 "address": "/8.8.8.8:14265", 
-"numberOfAllTransactions": 401, 
-"numberOfInvalidTransactions": 676, 
-"numberOfNewTransactions": 7 
+"numberOfAllTransactions": 877, 
+"numberOfInvalidTransactions": 406, 
+"numberOfNewTransactions": 451 
 }", "{ 
 "address": "/8.8.8.8:14265", 
-"numberOfAllTransactions": 427, 
-"numberOfInvalidTransactions": 811, 
-"numberOfNewTransactions": 941 
+"numberOfAllTransactions": 468, 
+"numberOfInvalidTransactions": 842, 
+"numberOfNewTransactions": 402 
 }"]}
 ```
 </Section>
@@ -146,7 +146,7 @@ curl http://localhost:14265
 {"error": "'command' parameter has not been specified"}
 ```
 </Section>
-</Tabs<
+</Tabs>
 
 
 

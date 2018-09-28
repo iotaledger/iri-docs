@@ -1,9 +1,9 @@
 
 ---
-### [broadcastTransactions](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L963)
+### [broadcastTransactions](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L952)
  void broadcastTransactionsStatement(java.util.List trytes)
 
-Broadcast a list of transactions to all neighbors. 
+Broadcast a list of transactions to all neighbors.
  The input trytes for this call are provided by `attachToTangle`.
 
 <Tabs> 
@@ -37,7 +37,7 @@ print jsonData
 <Section type="response">
 
 ```json
-{"duration": 731}
+{"duration": 732}
 ```
 </Section>
 
@@ -79,7 +79,7 @@ request(options, function (error, response, data) {
 <Section type="response">
 
 ```json
-{"duration": 483}
+{"duration": 655}
 ```
 </Section>
 
@@ -106,7 +106,7 @@ curl http://localhost:14265
 <Section type="response">
 
 ```json
-{"duration": 674}
+{"duration": 763}
 ```
 </Section>
 
@@ -116,7 +116,7 @@ curl http://localhost:14265
 {"error": "'command' parameter has not been specified"}
 ```
 </Section>
-</Tabs<
+</Tabs>
 
 
 

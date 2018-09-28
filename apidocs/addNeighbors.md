@@ -1,10 +1,10 @@
 
 ---
-### [addNeighbors](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L1151)
+### [addNeighbors](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L1140)
  [AbstractResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) addNeighborsStatement(java.util.List uris)
 
-Temporarily add a list of neighbors to your node. 
- The added neighbors will be removed after relaunching IRI. 
+Temporarily add a list of neighbors to your node.
+ The added neighbors will be removed after relaunching IRI.
  Add the neighbors to your config file or supply them in the -n command line option if you want to keep them after restart.
 
  The URI (Unique Resource Identification) for adding neighbors is:
@@ -41,7 +41,7 @@ print jsonData
 <Section type="response">
 
 ```json
-{"duration": "349", "addedNeighbors": "660"}
+{"duration": "639", "addedNeighbors": "178"}
 ```
 </Section>
 
@@ -83,7 +83,7 @@ request(options, function (error, response, data) {
 <Section type="response">
 
 ```json
-{"duration": "727", "addedNeighbors": "792"}
+{"duration": "141", "addedNeighbors": "63"}
 ```
 </Section>
 
@@ -110,7 +110,7 @@ curl http://localhost:14265
 <Section type="response">
 
 ```json
-{"duration": "259", "addedNeighbors": "297"}
+{"duration": "573", "addedNeighbors": "83"}
 ```
 </Section>
 
@@ -120,7 +120,7 @@ curl http://localhost:14265
 {"error": "'command' parameter has not been specified"}
 ```
 </Section>
-</Tabs<
+</Tabs>
 
 
 

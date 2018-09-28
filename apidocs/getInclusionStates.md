@@ -1,10 +1,10 @@
 
 ---
-### [getInclusionStates](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L750)
+### [getInclusionStates](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L739)
  [AbstractResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) getInclusionStatesStatement(java.util.List transactions, java.util.List tips)
 
-Get the inclusion states of a set of transactions. 
- This is for determining if a transaction was accepted and confirmed by the network or not. 
+Get the inclusion states of a set of transactions.
+ This is for determining if a transaction was accepted and confirmed by the network or not.
  You can search for multiple tips (and thus, milestones) to get past inclusion states of transactions.
 
  This API call simply returns a list of boolean values in the same order as the transaction list you submitted, thus you get a true/false whether a transaction is confirmed or not.
@@ -41,7 +41,7 @@ print jsonData
 <Section type="response">
 
 ```json
-{"duration": "434", "states": ["true", "true"]}
+{"duration": "33", "states": ["true", "true"]}
 ```
 </Section>
 
@@ -83,7 +83,7 @@ request(options, function (error, response, data) {
 <Section type="response">
 
 ```json
-{"duration": "339", "states": ["true", "true"]}
+{"duration": "612", "states": ["true", "true"]}
 ```
 </Section>
 
@@ -110,7 +110,7 @@ curl http://localhost:14265
 <Section type="response">
 
 ```json
-{"duration": "232", "states": ["true", "true"]}
+{"duration": "490", "states": ["true", "true"]}
 ```
 </Section>
 
@@ -120,7 +120,7 @@ curl http://localhost:14265
 {"error": "'command' parameter has not been specified"}
 ```
 </Section>
-</Tabs<
+</Tabs>
 
 
 

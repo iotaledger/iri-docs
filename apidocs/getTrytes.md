@@ -1,10 +1,10 @@
 
 ---
-### [getTrytes](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L599)
+### [getTrytes](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L588)
  [AbstractResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) getTrytesStatement(java.util.List hashes)
 
-Returns the raw transaction data (trytes) of a specific transaction. 
- These trytes can then be easily converted into the actual transaction object. 
+Returns the raw transaction data (trytes) of a specific transaction.
+ These trytes can then be easily converted into the actual transaction object.
  See utility functions for more details.
 
 <Tabs> 
@@ -38,7 +38,7 @@ print jsonData
 <Section type="response">
 
 ```json
-{"duration": "940", "trytes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+{"duration": "279", "trytes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
 ```
 </Section>
 
@@ -80,7 +80,7 @@ request(options, function (error, response, data) {
 <Section type="response">
 
 ```json
-{"duration": "560", "trytes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+{"duration": "872", "trytes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
 ```
 </Section>
 
@@ -107,7 +107,7 @@ curl http://localhost:14265
 <Section type="response">
 
 ```json
-{"duration": "527", "trytes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+{"duration": "91", "trytes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
 ```
 </Section>
 
@@ -117,7 +117,7 @@ curl http://localhost:14265
 {"error": "'command' parameter has not been specified"}
 ```
 </Section>
-</Tabs<
+</Tabs>
 
 
 

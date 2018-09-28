@@ -1,6 +1,6 @@
 
 ---
-### [interruptAttachingToTangle](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L717)
+### [interruptAttachingToTangle](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L706)
  [AbstractResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) interruptAttachingToTangleStatement()
 
 Interrupts and completely aborts the `attachToTangle` process.
@@ -36,7 +36,7 @@ print jsonData
 <Section type="response">
 
 ```json
-{"duration": "558"}
+{"duration": "613"}
 ```
 </Section>
 
@@ -78,7 +78,7 @@ request(options, function (error, response, data) {
 <Section type="response">
 
 ```json
-{"duration": "92"}
+{"duration": "138"}
 ```
 </Section>
 
@@ -105,7 +105,7 @@ curl http://localhost:14265
 <Section type="response">
 
 ```json
-{"duration": "577"}
+{"duration": "132"}
 ```
 </Section>
 
@@ -115,7 +115,7 @@ curl http://localhost:14265
 {"error": "'command' parameter has not been specified"}
 ```
 </Section>
-</Tabs<
+</Tabs>
 
 
 

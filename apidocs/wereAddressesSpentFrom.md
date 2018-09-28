@@ -1,6 +1,6 @@
 
 ---
-### [wereAddressesSpentFrom](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L380)
+### [wereAddressesSpentFrom](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L369)
  [AbstractResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) wereAddressesSpentFromStatement(java.util.List addresses)
 
 Check if a list of addresses was ever spent from, in the current epoch, or in previous epochs.
@@ -36,7 +36,7 @@ print jsonData
 <Section type="response">
 
 ```json
-{"duration": "742", "states": ["true", "true"]}
+{"duration": "264", "states": ["true", "true"]}
 ```
 </Section>
 
@@ -78,7 +78,7 @@ request(options, function (error, response, data) {
 <Section type="response">
 
 ```json
-{"duration": "335", "states": ["true", "true"]}
+{"duration": "107", "states": ["true", "true"]}
 ```
 </Section>
 
@@ -105,7 +105,7 @@ curl http://localhost:14265
 <Section type="response">
 
 ```json
-{"duration": "820", "states": ["true", "true"]}
+{"duration": "60", "states": ["true", "true"]}
 ```
 </Section>
 
@@ -115,7 +115,7 @@ curl http://localhost:14265
 {"error": "'command' parameter has not been specified"}
 ```
 </Section>
-</Tabs<
+</Tabs>
 
 
 

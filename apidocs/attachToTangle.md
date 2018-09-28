@@ -1,13 +1,13 @@
 
 ---
-### [attachToTangle](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L1073)
+### [attachToTangle](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L1062)
  java.util.List attachToTangleStatement([Hash](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/model/Hash.java) trunkTransaction, [Hash](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/model/Hash.java) branchTransaction, int minWeightMagnitude, java.util.List trytes)
 
-Attaches the specified transactions (trytes) to the Tangle by doing Proof of Work. 
+Attaches the specified transactions (trytes) to the Tangle by doing Proof of Work.
  You need to supply `branchTransaction` as well as `trunkTransaction` (the tips which you're going to validate and reference with this transaction) - both of which you'll get through the `getTransactionsToApprove` API call.
 
  The returned value is a different set of tryte values which you can input into `broadcastTransactions` and `storeTransactions`.
- The last 243 trytes of the return value consist of the: `trunkTransaction` + `branchTransaction` + `nonce`. 
+ The last 243 trytes of the return value consist of the: `trunkTransaction` + `branchTransaction` + `nonce`.
  These are valid trytes which are then accepted by the network.
 
 <Tabs> 
@@ -41,7 +41,7 @@ print jsonData
 <Section type="response">
 
 ```json
-{"duration": 163, "trytes": "trytes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+{"duration": 399, "trytes": "trytes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
 ```
 </Section>
 
@@ -83,7 +83,7 @@ request(options, function (error, response, data) {
 <Section type="response">
 
 ```json
-{"duration": 938, "trytes": "trytes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+{"duration": 317, "trytes": "trytes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
 ```
 </Section>
 
@@ -110,7 +110,7 @@ curl http://localhost:14265
 <Section type="response">
 
 ```json
-{"duration": 836, "trytes": "trytes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+{"duration": 987, "trytes": "trytes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
 ```
 </Section>
 
@@ -120,7 +120,7 @@ curl http://localhost:14265
 {"error": "'command' parameter has not been specified"}
 ```
 </Section>
-</Tabs<
+</Tabs>
 
 
 

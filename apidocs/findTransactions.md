@@ -1,141 +1,89 @@
 
----
-### [findTransactions](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L846)
- [AbstractResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) findTransactionsStatement(java.util.Map request)
+# [findTransactions](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/API.java#L1188)
+ [AbstractResponse](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) findTransactionsStatement(Map<String, Object> request)
 
-Find the transactions which match the specified input and return.
- All input values are lists, for which a list of return values (transaction hashes), in the same order, is returned for all individual elements.
- The input fields can either be `bundles`, `addresses`, `tags` or `approvees`.
- **Using multiple of these input fields returns the intersection of the values.**
+  Find the transactions which match the specified input and return.  All input values are lists, for which a list of return values (transaction hashes), in the same order, is returned for all individual elements.  The input fields can either be `bundles`, `addresses`, `tags` or `approvees`.      Using multiple of these input fields returns the intersection of the values.  Returns an [ErrorResponse](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/ErrorResponse.java) if more than maxFindTxs was found.
 
- Returns an {@link com.iota.iri.service.dto.ErrorResponse} if more than maxFindTxs was found
+> **Important note:** This API is currently in Beta and is subject to change. Use of these APIs in production applications is not supported.
 
-<Tabs> 
+## Request
 
-<Tab language="Python">
+## Request headers
 
-<Section type="request">
+| Header       | Value | Required or Optional |
+|:---------------|:--------|:--------|
+| X-IOTA-API-Version | 1 | Required |
+| Content-Type | application/json | Optional |
+| Authorization  | Bearer {token} | Optional  |
 
-```Python
-import urllib2
-import json
+## Request parameters
+| Parameter       | Type | Required or Optional | Description |
+|:---------------|:--------|:--------| :--------|
+| request | Map<String, Object> | Required | The map with input fields                 Must contain at least one of 'bundles', 'addresses', 'tags' or 'approvees'. |
 
-command = {"command": "findTransactions", "request": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+## Responses
 
-stringified = json.dumps(command)
+If successful, this method returns a `200 OK` response code and [FindTransactionsResponse](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/FindTransactionsResponse.java) in the body.
 
-headers = {
-    'content-type': 'application/json',
-    'X-IOTA-API-Version': '1'
-}
+| Return type | Description |
+|--|--|
+| Integer duration | The duration it took to process this command in milliseconds |
+| String[] hashes | The transaction hashes which are returned depend on your input.   For each specified input value, the command will return the following:    * `bundles`: returns the list of transactions which contain the specified bundle hash.<br/>  * `addresses`: returns the list of transactions which have the specified address as an input/output field.<br/>  * `tags`: returns the list of transactions which contain the specified tag value.<br/>  * `approvees`: returns the list of transactions which reference (i.e. approve) the specified transaction.<br/>   |
 
-request = urllib2.Request(url="http://localhost:14265", data=stringified, headers=headers)
-returnData = urllib2.urlopen(request).read()
+## Example  
 
-jsonData = json.loads(returnData)
+### Request
 
-print jsonData
-```
-</Section>
+The following is an example of the request.
 
-<Section type="response">
-
-```json
-{"duration": "506", "hashes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
-```
-</Section>
-
-<Section type="error">
-
-```json
-{"error": "'command' parameter has not been specified"}
-```
-</Section>
-
-<Tab language="NodeJS">
-
-<Section type="request">
-
-```javascript
-var request = require('request');
-
-var command = {"command": "findTransactions", "request": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
-
-var options = {
-  url: 'http://localhost:14265',
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-		'X-IOTA-API-Version': '1',
-    'Content-Length': Buffer.byteLength(JSON.stringify(command))
-  },
-  json: command
-};
-
-request(options, function (error, response, data) {
-  if (!error && response.statusCode == 200) {
-    console.log(data);
-  }
-});
-```
-</Section>
-
-<Section type="response">
-
-```json
-{"duration": "740", "hashes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
-```
-</Section>
-
-<Section type="error">
-
-```json
-{"error": "'command' parameter has not been specified"}
-```
-</Section>
-
-<Tab language="cURL">
-
-<Section type="request">
-
-```bash
-curl http://localhost:14265 
+ ## Example
+ 
+ ```bash
+ curl http://localhost:14265 
 -X POST 
 -H 'Content-Type: application/json' 
 -H 'X-IOTA-API-Version: 1' 
--d '{"command": "findTransactions", "request": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}'
-```
-</Section>
+-d '{ 
+"command": "findTransactions", 
+"request": ["DGJGKEBWWUTZJOGOJSUKQLYWNQDDJLLGBTMBOGXAERJLLOEUCI9KELTOWIJ9EAHDD9BFGDFBGSSFSLOGV", "LDMIKNOSJLORITEBBLFQLHWBVGTNXOXJNRQH9LGBGSPKHPAFHRYHCKKUHVOLTSLSS9GLJNLBIQRZSYVVS"]}'
+ ```
 
-<Section type="response">
+### Response - 200
 
-```json
-{"duration": "858", "hashes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
-```
-</Section>
-
-<Section type="error">
+The following is an example of the response. Note: The response object shown here may be truncated for brevity. All of the properties will be returned from an actual call.
 
 ```json
-{"error": "'command' parameter has not been specified"}
+{"duration": "933", "hashes": ["ZMBKZ9ITLRNXPTUFJSAFHKCMTLXIRGHQVQHSCTOKGQFOMPNNZJMOXJJKPPRLLB9LNKEMTFWNJAJLFKVWN", "JECGEOYUUPUQMYXEQZMASWJMLCJENUEXSRRVZJNK9LPXTKYY9LAEPUYHLVBKOEKQWAJQTEGPGXWVHANX9"]}
 ```
-</Section>
-</Tabs>
 
+### Response - 400
 
+A node returns this for various reasons. These are the most common ones:
+* Invalid API Version
+* The maximal number of characters the body of an API call is exceeded
+* The command contains invalid parameters
 
-***
-	
-|Parameters | Description |
-|--|--|
-| request | the map with input fields |
+```json
+{
+  "duration": 15,
+  "error": "Error specific information"
+}
+```
 
-***
+### Response - 401
 
-Returns [FindTransactionsResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/FindTransactionsResponse.java)
+```json
+{
+  "duration": 15,
+  "error": "COMMAND findTransactions is not available on this node"
+}
+```
 
-|Return | Description |
-|--|--|
-| duration | The duration it took to process this command in milliseconds |
-| hashes | The transaction hashes which are returned depend on your input. For each specified input value, the command will return the following: <code>bundles</code>: returns the list of transactions which contain the specified bundle hash. <code>addresses</code>: returns the list of transactions which have the specified address as an input/output field. <code>tags</code>: returns the list of transactions which contain the specified tag value. <code>approvees</code>: returns the list of transactions which reference (i.e. confirm) the specified transaction. |
-***
+### Response - 500
+
+```json
+{
+  "duration": 15,
+  "exception": "Internal server error message"
+}
+```

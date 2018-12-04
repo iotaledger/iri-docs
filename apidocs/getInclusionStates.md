@@ -1,142 +1,90 @@
 
----
-### [getInclusionStates](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L739)
- [AbstractResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) getInclusionStatesStatement(java.util.List transactions, java.util.List tips)
+# [getInclusionStates](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/API.java#L1004)
+ [AbstractResponse](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) getInclusionStatesStatement(List<String> transactions, List<String> tips)
 
-Get the inclusion states of a set of transactions.
- This is for determining if a transaction was accepted and confirmed by the network or not.
- You can search for multiple tips (and thus, milestones) to get past inclusion states of transactions.
+  Get the inclusion states of a set of transactions.  This is for determining if a transaction was accepted and confirmed by the network or not.  You can search for multiple tips (and thus, milestones) to get past inclusion states of transactions.      This API call returns a list of boolean values in the same order as the submitted transactions.<br/>  Boolean values will be `true` for confirmed transactions, otherwise `false`.    Returns an [ErrorResponse](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/ErrorResponse.java) if a tip is missing or the subtangle is not solid
 
- This API call simply returns a list of boolean values in the same order as the transaction list you submitted, thus you get a true/false whether a transaction is confirmed or not.
- Returns an {@link com.iota.iri.service.dto.ErrorResponse} if a tip is missing or the subtangle is not solid
+> **Important note:** This API is currently in Beta and is subject to change. Use of these APIs in production applications is not supported.
 
-<Tabs> 
+## Request
 
-<Tab language="Python">
+## Request headers
 
-<Section type="request">
+| Header       | Value | Required or Optional |
+|:---------------|:--------|:--------|
+| X-IOTA-API-Version | 1 | Required |
+| Content-Type | application/json | Optional |
+| Authorization  | Bearer {token} | Optional  |
 
-```Python
-import urllib2
-import json
+## Request parameters
+| Parameter       | Type | Required or Optional | Description |
+|:---------------|:--------|:--------| :--------|
+| transactions | List<String> | Required | List of transactions you want to get the inclusion state for. |
+| tips | List<String> | Required | List of tips (including milestones) you want to search for the inclusion state. |
 
-command = {"command": "getInclusionStates", "transactions": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"], "tips": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+## Responses
 
-stringified = json.dumps(command)
+If successful, this method returns a `200 OK` response code and [GetInclusionStatesResponse](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/GetInclusionStatesResponse.java) in the body.
 
-headers = {
-    'content-type': 'application/json',
-    'X-IOTA-API-Version': '1'
-}
+| Return type | Description |
+|--|--|
+| Integer duration | The duration it took to process this command in milliseconds |
+| boolean[] states | A list of booleans indicating if the transaction is confirmed or not, according to the tips supplied.  Order of booleans is equal to order of the supplied transactions. |
 
-request = urllib2.Request(url="http://localhost:14265", data=stringified, headers=headers)
-returnData = urllib2.urlopen(request).read()
+## Example  
 
-jsonData = json.loads(returnData)
+### Request
 
-print jsonData
-```
-</Section>
+The following is an example of the request.
 
-<Section type="response">
-
-```json
-{"duration": "33", "states": ["true", "true"]}
-```
-</Section>
-
-<Section type="error">
-
-```json
-{"error": "'command' parameter has not been specified"}
-```
-</Section>
-
-<Tab language="NodeJS">
-
-<Section type="request">
-
-```javascript
-var request = require('request');
-
-var command = {"command": "getInclusionStates", "transactions": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"], "tips": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
-
-var options = {
-  url: 'http://localhost:14265',
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-		'X-IOTA-API-Version': '1',
-    'Content-Length': Buffer.byteLength(JSON.stringify(command))
-  },
-  json: command
-};
-
-request(options, function (error, response, data) {
-  if (!error && response.statusCode == 200) {
-    console.log(data);
-  }
-});
-```
-</Section>
-
-<Section type="response">
-
-```json
-{"duration": "612", "states": ["true", "true"]}
-```
-</Section>
-
-<Section type="error">
-
-```json
-{"error": "'command' parameter has not been specified"}
-```
-</Section>
-
-<Tab language="cURL">
-
-<Section type="request">
-
-```bash
-curl http://localhost:14265 
+ ## Example
+ 
+ ```bash
+ curl http://localhost:14265 
 -X POST 
 -H 'Content-Type: application/json' 
 -H 'X-IOTA-API-Version: 1' 
--d '{"command": "getInclusionStates", "transactions": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"], "tips": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}'
-```
-</Section>
+-d '{ 
+"command": "getInclusionStates", 
+"transactions": ["ZIKICDTSIDVHXXHZLFPMOPQIIDOYMNJRZMOWKXRMNVVQYGBJVNVKZNFUUWD9EQHBIGGUMQRHOMCNXXLQZ", "YYJUIDHEWFLBZIXGRFHSATZOZENIQWFSYVJD9BQJGOCALNUACTPALIJADYSPFMHTRKZQXBSAQIMRUFLSF"], "tips": ["CWDP9DBWDPREIKKTCSELTMHDQFJIE9OLQI9TJEIWVJPGYCGXEZYF9BGQVPKQDYJQQIRCDXBLDCHJOJLVO", "FGRKWAKWOHVTMPJ9DECZFYKUGBWDH9EMLOGVZBKLISJMB9AYTISXZ9KQDCBL9NOYXOKQSRMXFUSALHC9Y"]}'
+ ```
 
-<Section type="response">
+### Response - 200
 
-```json
-{"duration": "490", "states": ["true", "true"]}
-```
-</Section>
-
-<Section type="error">
+The following is an example of the response. Note: The response object shown here may be truncated for brevity. All of the properties will be returned from an actual call.
 
 ```json
-{"error": "'command' parameter has not been specified"}
+{"duration": "561", "states": ["false", "false"]}
 ```
-</Section>
-</Tabs>
 
+### Response - 400
 
+A node returns this for various reasons. These are the most common ones:
+* Invalid API Version
+* The maximal number of characters the body of an API call is exceeded
+* The command contains invalid parameters
 
-***
-	
-|Parameters | Description |
-|--|--|
-| transactions | List of transactions you want to get the inclusion state for. |
-| tips | List of tips (including milestones) you want to search for the inclusion state. |
+```json
+{
+  "duration": 15,
+  "error": "Error specific information"
+}
+```
 
-***
+### Response - 401
 
-Returns [GetInclusionStatesResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/GetInclusionStatesResponse.java)
+```json
+{
+  "duration": 15,
+  "error": "COMMAND getInclusionStates is not available on this node"
+}
+```
 
-|Return | Description |
-|--|--|
-| duration | The duration it took to process this command in milliseconds |
-| states | List of boolean values in the same order as the transaction list you submitted, thus you get a true/false whether a transaction is confirmed or not. |
-***
+### Response - 500
+
+```json
+{
+  "duration": 15,
+  "exception": "Internal server error message"
+}
+```

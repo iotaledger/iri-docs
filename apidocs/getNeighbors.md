@@ -1,163 +1,102 @@
 
----
-### [getNeighbors](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L697)
- [AbstractResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) getNeighborsStatement()
+# [getNeighbors](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/API.java#L701)
+ [AbstractResponse](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) getNeighborsStatement()
 
-Returns the set of neighbors you are connected with, as well as their activity statistics (or counters).
- The activity counters are reset after restarting IRI.
+Returns the set of neighbors you are connected with, as well as their activity statistics (or counters).  The activity counters are reset after restarting IRI.
 
-<Tabs> 
+> **Important note:** This API is currently in Beta and is subject to change. Use of these APIs in production applications is not supported.
 
-<Tab language="Python">
+## Request
 
-<Section type="request">
+## Request headers
 
-```Python
-import urllib2
-import json
+| Header       | Value | Required or Optional |
+|:---------------|:--------|:--------|
+| X-IOTA-API-Version | 1 | Required |
+| Content-Type | application/json | Optional |
+| Authorization  | Bearer {token} | Optional  |
 
-command = {"command": "getNeighbors"}
+## Responses
 
-stringified = json.dumps(command)
+If successful, this method returns a `200 OK` response code and [GetNeighborsResponse](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/GetNeighborsResponse.java) in the body.
 
-headers = {
-    'content-type': 'application/json',
-    'X-IOTA-API-Version': '1'
-}
+| Return type | Description |
+|--|--|
+| Integer duration | The duration it took to process this command in milliseconds |
+| [GetNeighborsResponse.Neighbor[]](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/GetNeighborsResponse/Neighbor.java) neighbors | The neighbors you are connected with, as well as their activity counters.<br/>**address**: The address of your neighbor<br/>**numberOfAllTransactions**: Number of all transactions sent (invalid, valid, already-seen)<br/>**numberOfRandomTransactionRequests**: Random tip requests which were sent<br/>**numberOfNewTransactions**: New transactions which were transmitted.<br/>**numberOfInvalidTransactions**: Invalid transactions your neighbor has sent you.   These are transactions with invalid signatures or overall schema.<br/>**numberOfStaleTransactions**: Stale transactions your neighbor has sent you.  These are transactions with a timestamp older than your latest snapshot.<br/>**numberOfSentTransactions**: Amount of transactions send through your neighbor<br/>**connectionType**: The method type your neighbor is using to connect (TCP / UDP) |
 
-request = urllib2.Request(url="http://localhost:14265", data=stringified, headers=headers)
-returnData = urllib2.urlopen(request).read()
+## Example  
 
-jsonData = json.loads(returnData)
+### Request
 
-print jsonData
-```
-</Section>
+The following is an example of the request.
 
-<Section type="response">
-
-```json
-{"duration": "795", "neighbors": ["{ 
-"address": "/8.8.8.8:14265", 
-"numberOfAllTransactions": 859, 
-"numberOfInvalidTransactions": 256, 
-"numberOfNewTransactions": 472 
-}", "{ 
-"address": "/8.8.8.8:14265", 
-"numberOfAllTransactions": 84, 
-"numberOfInvalidTransactions": 90, 
-"numberOfNewTransactions": 482 
-}"]}
-```
-</Section>
-
-<Section type="error">
-
-```json
-{"error": "'command' parameter has not been specified"}
-```
-</Section>
-
-<Tab language="NodeJS">
-
-<Section type="request">
-
-```javascript
-var request = require('request');
-
-var command = {"command": "getNeighbors"}
-
-var options = {
-  url: 'http://localhost:14265',
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-		'X-IOTA-API-Version': '1',
-    'Content-Length': Buffer.byteLength(JSON.stringify(command))
-  },
-  json: command
-};
-
-request(options, function (error, response, data) {
-  if (!error && response.statusCode == 200) {
-    console.log(data);
-  }
-});
-```
-</Section>
-
-<Section type="response">
-
-```json
-{"duration": "738", "neighbors": ["{ 
-"address": "/8.8.8.8:14265", 
-"numberOfAllTransactions": 118, 
-"numberOfInvalidTransactions": 665, 
-"numberOfNewTransactions": 176 
-}", "{ 
-"address": "/8.8.8.8:14265", 
-"numberOfAllTransactions": 266, 
-"numberOfInvalidTransactions": 670, 
-"numberOfNewTransactions": 759 
-}"]}
-```
-</Section>
-
-<Section type="error">
-
-```json
-{"error": "'command' parameter has not been specified"}
-```
-</Section>
-
-<Tab language="cURL">
-
-<Section type="request">
-
-```bash
-curl http://localhost:14265 
+ ## Example
+ 
+ ```bash
+ curl http://localhost:14265 
 -X POST 
 -H 'Content-Type: application/json' 
 -H 'X-IOTA-API-Version: 1' 
--d '{"command": "getNeighbors"}'
-```
-</Section>
+-d '{ 
+"command": "getNeighbors", 
+}'
+ ```
 
-<Section type="response">
+### Response - 200
+
+The following is an example of the response. Note: The response object shown here may be truncated for brevity. All of the properties will be returned from an actual call.
 
 ```json
-{"duration": "688", "neighbors": ["{ 
+{"duration": "771", "neighbors": ["{ 
 "address": "/8.8.8.8:14265", 
-"numberOfAllTransactions": 877, 
-"numberOfInvalidTransactions": 406, 
-"numberOfNewTransactions": 451 
+"numberOfAllTransactions": 231, 
+"numberOfRandomTransactionRequests": 738 
+"numberOfNewTransactions": 63 
+"numberOfInvalidTransactions": 677, 
+"numberOfStaleTransactions": 443 
+"numberOfSentTransactions": 793 
+"connectiontype": TCP 
 }", "{ 
 "address": "/8.8.8.8:14265", 
-"numberOfAllTransactions": 468, 
-"numberOfInvalidTransactions": 842, 
-"numberOfNewTransactions": 402 
+"numberOfAllTransactions": 198, 
+"numberOfRandomTransactionRequests": 965 
+"numberOfNewTransactions": 116 
+"numberOfInvalidTransactions": 337, 
+"numberOfStaleTransactions": 817 
+"numberOfSentTransactions": 278 
+"connectiontype": UDP 
 }"]}
 ```
-</Section>
 
-<Section type="error">
+### Response - 400
+
+A node returns this for various reasons. These are the most common ones:
+* Invalid API Version
+* The maximal number of characters the body of an API call is exceeded
+* The command contains invalid parameters
 
 ```json
-{"error": "'command' parameter has not been specified"}
+{
+  "duration": 15,
+  "error": "Error specific information"
+}
 ```
-</Section>
-</Tabs>
 
+### Response - 401
 
+```json
+{
+  "duration": 15,
+  "error": "COMMAND getNeighbors is not available on this node"
+}
+```
 
+### Response - 500
 
-
-***
-
-Returns [GetNeighborsResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/GetNeighborsResponse.java)
-
-|Return | Description |
-|--|--|
-| duration | The duration it took to process this command in milliseconds |
-| neighbors | The list of neighbors, including the following stats: address, connectionType, numberOfAllTransactions, numberOfRandomTransactionRequests, numberOfNewTransactions, numberOfInvalidTransactions, numberOfSentTransactions |
-***
+```json
+{
+  "duration": 15,
+  "exception": "Internal server error message"
+}
+```

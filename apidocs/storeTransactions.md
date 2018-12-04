@@ -1,130 +1,88 @@
 
----
-### [storeTransactions](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L670)
- void storeTransactionsStatement(java.util.List trytes)
+# [storeTransactions](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/API.java#L924)
+ [AbstractResponse](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) storeTransactionsStatement(List<String> trytes)
 
-Store transactions into the local storage.
- The trytes to be used for this call are returned by `attachToTangle`.
+Stores transactions in the local storage.  The trytes to be used for this call should be valid, attached transaction trytes.  These trytes are returned by `attachToTangle`, or by doing proof of work somewhere else.
 
-<Tabs> 
+> **Important note:** This API is currently in Beta and is subject to change. Use of these APIs in production applications is not supported.
 
-<Tab language="Python">
+## Request
 
-<Section type="request">
+## Request headers
 
-```Python
-import urllib2
-import json
+| Header       | Value | Required or Optional |
+|:---------------|:--------|:--------|
+| X-IOTA-API-Version | 1 | Required |
+| Content-Type | application/json | Optional |
+| Authorization  | Bearer {token} | Optional  |
 
-command = {"command": "storeTransactions", "trytes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+## Request parameters
+| Parameter       | Type | Required or Optional | Description |
+|:---------------|:--------|:--------| :--------|
+| trytes | List<String> | Required | Transaction data to be stored. |
 
-stringified = json.dumps(command)
+## Responses
 
-headers = {
-    'content-type': 'application/json',
-    'X-IOTA-API-Version': '1'
-}
+If successful, this method returns a `200 OK` response code and [AbstractResponse.Emptyness](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/AbstractResponse/Emptyness.java) in the body.
 
-request = urllib2.Request(url="http://localhost:14265", data=stringified, headers=headers)
-returnData = urllib2.urlopen(request).read()
+| Return type | Description |
+|--|--|
+| Integer duration | The duration it took to process this command in milliseconds |
 
-jsonData = json.loads(returnData)
+## Example  
 
-print jsonData
-```
-</Section>
+### Request
 
-<Section type="response">
+The following is an example of the request.
 
-```json
-{"duration": 25}
-```
-</Section>
-
-<Section type="error">
-
-```json
-{"error": "'command' parameter has not been specified"}
-```
-</Section>
-
-<Tab language="NodeJS">
-
-<Section type="request">
-
-```javascript
-var request = require('request');
-
-var command = {"command": "storeTransactions", "trytes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
-
-var options = {
-  url: 'http://localhost:14265',
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-		'X-IOTA-API-Version': '1',
-    'Content-Length': Buffer.byteLength(JSON.stringify(command))
-  },
-  json: command
-};
-
-request(options, function (error, response, data) {
-  if (!error && response.statusCode == 200) {
-    console.log(data);
-  }
-});
-```
-</Section>
-
-<Section type="response">
-
-```json
-{"duration": 796}
-```
-</Section>
-
-<Section type="error">
-
-```json
-{"error": "'command' parameter has not been specified"}
-```
-</Section>
-
-<Tab language="cURL">
-
-<Section type="request">
-
-```bash
-curl http://localhost:14265 
+ ## Example
+ 
+ ```bash
+ curl http://localhost:14265 
 -X POST 
 -H 'Content-Type: application/json' 
 -H 'X-IOTA-API-Version: 1' 
--d '{"command": "storeTransactions", "trytes": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}'
-```
-</Section>
+-d '{ 
+"command": "storeTransactions", 
+"trytes": ["OMFBLOGDRIVOQFCOWKRKQQWQXOAGEZ9LS99XRULRFVFNAUG9IXPAG9YGNNBESILGTBVHXVSGKSNHLDBAA9DWIINHLMBI9TSBNHENOZWWYCCQBZMUCZSHXKDNMFPVNKDNZKYBNJCJTVIOMC9GTLJDN9XCEJFOVBESCQ", "TARAXQ9TCXP9UAW9GEWMJJDVIQMXCDKLFOAGXKYGCDNLSIUAFZUXJBZCLCWFTKYLMFJQIZNAJVTZFFBNYVEMSFRCCPPUGESOPLU9FUS99MEJITLWYFQMUVBTLXPJIRFBAFTEPGONSDYZTHVIJLZEUQLEOV9EUGIVCN"]}'
+ ```
 
-<Section type="response">
+### Response - 200
 
-```json
-{"duration": 29}
-```
-</Section>
-
-<Section type="error">
+The following is an example of the response. Note: The response object shown here may be truncated for brevity. All of the properties will be returned from an actual call.
 
 ```json
-{"error": "'command' parameter has not been specified"}
+{"duration": "642"}
 ```
-</Section>
-</Tabs>
 
+### Response - 400
 
+A node returns this for various reasons. These are the most common ones:
+* Invalid API Version
+* The maximal number of characters the body of an API call is exceeded
+* The command contains invalid parameters
 
-***
-	
-|Parameters | Description |
-|--|--|
-| trytes | List of raw data of transactions to be rebroadcast. |
+```json
+{
+  "duration": 15,
+  "error": "Error specific information"
+}
+```
 
+### Response - 401
 
-***
+```json
+{
+  "duration": 15,
+  "error": "COMMAND storeTransactions is not available on this node"
+}
+```
+
+### Response - 500
+
+```json
+{
+  "duration": 15,
+  "exception": "Internal server error message"
+}
+```

@@ -1,141 +1,89 @@
 
----
-### [addNeighbors](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L1140)
- [AbstractResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) addNeighborsStatement(java.util.List uris)
+# [addNeighbors](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/API.java#L718)
+ [AbstractResponse](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) addNeighborsStatement(List<String> uris)
 
-Temporarily add a list of neighbors to your node.
- The added neighbors will be removed after relaunching IRI.
- Add the neighbors to your config file or supply them in the -n command line option if you want to keep them after restart.
+Temporarily add a list of neighbors to your node.  The added neighbors will not be available after restart.  Add the neighbors to your config file   or supply them in the `-n` command line option if you want to add them permanently.   The URI (Unique Resource Identification) for adding neighbors is:  **udp://IPADDRESS:PORT**
 
- The URI (Unique Resource Identification) for adding neighbors is:
- **udp://IPADDRESS:PORT**
+> **Important note:** This API is currently in Beta and is subject to change. Use of these APIs in production applications is not supported.
 
-<Tabs> 
+## Request
 
-<Tab language="Python">
+## Request headers
 
-<Section type="request">
+| Header       | Value | Required or Optional |
+|:---------------|:--------|:--------|
+| X-IOTA-API-Version | 1 | Required |
+| Content-Type | application/json | Optional |
+| Authorization  | Bearer {token} | Optional  |
 
-```Python
-import urllib2
-import json
+## Request parameters
+| Parameter       | Type | Required or Optional | Description |
+|:---------------|:--------|:--------| :--------|
+| uris | List<String> | Required | list of neighbors to add |
 
-command = {"command": "addNeighbors", "uris": ["udp://8.8.8.8:14265", "udp://8.8.8.8:14265"]}
+## Responses
 
-stringified = json.dumps(command)
+If successful, this method returns a `200 OK` response code and [AddedNeighborsResponse](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/AddedNeighborsResponse.java) in the body.
 
-headers = {
-    'content-type': 'application/json',
-    'X-IOTA-API-Version': '1'
-}
+| Return type | Description |
+|--|--|
+| Integer duration | The duration it took to process this command in milliseconds |
+| int addedNeighbors | The amount of temporally added neighbors to this node.  Can be 0 or more. |
 
-request = urllib2.Request(url="http://localhost:14265", data=stringified, headers=headers)
-returnData = urllib2.urlopen(request).read()
+## Example  
 
-jsonData = json.loads(returnData)
+### Request
 
-print jsonData
-```
-</Section>
+The following is an example of the request.
 
-<Section type="response">
-
-```json
-{"duration": "639", "addedNeighbors": "178"}
-```
-</Section>
-
-<Section type="error">
-
-```json
-{"error": "'command' parameter has not been specified"}
-```
-</Section>
-
-<Tab language="NodeJS">
-
-<Section type="request">
-
-```javascript
-var request = require('request');
-
-var command = {"command": "addNeighbors", "uris": ["udp://8.8.8.8:14265", "udp://8.8.8.8:14265"]}
-
-var options = {
-  url: 'http://localhost:14265',
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-		'X-IOTA-API-Version': '1',
-    'Content-Length': Buffer.byteLength(JSON.stringify(command))
-  },
-  json: command
-};
-
-request(options, function (error, response, data) {
-  if (!error && response.statusCode == 200) {
-    console.log(data);
-  }
-});
-```
-</Section>
-
-<Section type="response">
-
-```json
-{"duration": "141", "addedNeighbors": "63"}
-```
-</Section>
-
-<Section type="error">
-
-```json
-{"error": "'command' parameter has not been specified"}
-```
-</Section>
-
-<Tab language="cURL">
-
-<Section type="request">
-
-```bash
-curl http://localhost:14265 
+ ## Example
+ 
+ ```bash
+ curl http://localhost:14265 
 -X POST 
 -H 'Content-Type: application/json' 
 -H 'X-IOTA-API-Version: 1' 
--d '{"command": "addNeighbors", "uris": ["udp://8.8.8.8:14265", "udp://8.8.8.8:14265"]}'
-```
-</Section>
+-d '{ 
+"command": "addNeighbors", 
+"uris": ["udp://8.8.8.8:14265", "udp://8.8.8.8:14265"]}'
+ ```
 
-<Section type="response">
+### Response - 200
 
-```json
-{"duration": "573", "addedNeighbors": "83"}
-```
-</Section>
-
-<Section type="error">
+The following is an example of the response. Note: The response object shown here may be truncated for brevity. All of the properties will be returned from an actual call.
 
 ```json
-{"error": "'command' parameter has not been specified"}
+{"duration": "455", "addedNeighbors": "587"}
 ```
-</Section>
-</Tabs>
 
+### Response - 400
 
+A node returns this for various reasons. These are the most common ones:
+* Invalid API Version
+* The maximal number of characters the body of an API call is exceeded
+* The command contains invalid parameters
 
-***
-	
-|Parameters | Description |
-|--|--|
-| uris | list of neighbors to add |
+```json
+{
+  "duration": 15,
+  "error": "Error specific information"
+}
+```
 
-***
+### Response - 401
 
-Returns [AddedNeighborsResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/AddedNeighborsResponse.java)
+```json
+{
+  "duration": 15,
+  "error": "COMMAND addNeighbors is not available on this node"
+}
+```
 
-|Return | Description |
-|--|--|
-| duration | The duration it took to process this command in milliseconds |
-| addedNeighbors | Gets the number of added neighbors. |
-***
+### Response - 500
+
+```json
+{
+  "duration": 15,
+  "exception": "Internal server error message"
+}
+```

@@ -1,143 +1,91 @@
 
----
-### [getTransactionsToApprove](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L630)
- java.util.List getTransactionsToApproveStatement(int depth, java.util.Optional reference)
+# [getTransactionsToApprove](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/API.java#L841)
+ [AbstractResponse](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) getTransactionsToApproveStatement(int depth, Optional<[Hash](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/model/Hash.java)> reference)
 
-Tip selection which returns `trunkTransaction` and `branchTransaction`.
- The input value `depth` determines how many milestones to go back for finding the transactions to approve.
- The higher your `depth` value, the more work you have to do as you are confirming more transactions.
- If the `depth` is too large (usually above 15, it depends on the node's configuration) an error will be returned.
- The `reference` is an optional hash of a transaction you want to approve.
- If it can't be found at the specified `depth` then an error will be returned.
+Tip selection which returns `trunkTransaction` and `branchTransaction`.  The input value `depth` determines how many milestones to go back for finding the transactions to approve.  The higher your `depth` value, the more work you have to do as you are confirming more transactions.  If the `depth` is too large (usually above 15, it depends on the node's configuration) an error will be returned.  The `reference` is an optional hash of a transaction you want to approve.  If it can't be found at the specified `depth` then an error will be returned.
 
-<Tabs> 
+> **Important note:** This API is currently in Beta and is subject to change. Use of these APIs in production applications is not supported.
 
-<Tab language="Python">
+## Request
 
-<Section type="request">
+## Request headers
 
-```Python
-import urllib2
-import json
+| Header       | Value | Required or Optional |
+|:---------------|:--------|:--------|
+| X-IOTA-API-Version | 1 | Required |
+| Content-Type | application/json | Optional |
+| Authorization  | Bearer {token} | Optional  |
 
-command = {"command": "getTransactionsToApprove", "depth": "15", "reference": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
+## Request parameters
+| Parameter       | Type | Required or Optional | Description |
+|:---------------|:--------|:--------| :--------|
+| depth | int | Required | Number of bundles to go back to determine the transactions for approval. |
+| reference | Optional<[Hash](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/model/Hash.java)> | Optional | Hash of transaction to start random-walk from, used to make sure the tips returned reference a given transaction in their past. |
 
-stringified = json.dumps(command)
+## Responses
 
-headers = {
-    'content-type': 'application/json',
-    'X-IOTA-API-Version': '1'
-}
+If successful, this method returns a `200 OK` response code and [GetTransactionsToApproveResponse](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/GetTransactionsToApproveResponse.java) in the body.
 
-request = urllib2.Request(url="http://localhost:14265", data=stringified, headers=headers)
-returnData = urllib2.urlopen(request).read()
+| Return type | Description |
+|--|--|
+| Integer duration | The duration it took to process this command in milliseconds |
+| String trunkTransaction | The trunk transaction tip to reference in your transaction or bundle |
+| String branchTransaction | The branch transaction tip to reference in your transaction or bundle |
 
-jsonData = json.loads(returnData)
+## Example  
 
-print jsonData
-```
-</Section>
+### Request
 
-<Section type="response">
+The following is an example of the request.
 
-```json
-{"duration": "82", "branchTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "trunkTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"}
-```
-</Section>
-
-<Section type="error">
-
-```json
-{"error": "'command' parameter has not been specified"}
-```
-</Section>
-
-<Tab language="NodeJS">
-
-<Section type="request">
-
-```javascript
-var request = require('request');
-
-var command = {"command": "getTransactionsToApprove", "depth": "15", "reference": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}
-
-var options = {
-  url: 'http://localhost:14265',
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-		'X-IOTA-API-Version': '1',
-    'Content-Length': Buffer.byteLength(JSON.stringify(command))
-  },
-  json: command
-};
-
-request(options, function (error, response, data) {
-  if (!error && response.statusCode == 200) {
-    console.log(data);
-  }
-});
-```
-</Section>
-
-<Section type="response">
-
-```json
-{"duration": "775", "branchTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "trunkTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"}
-```
-</Section>
-
-<Section type="error">
-
-```json
-{"error": "'command' parameter has not been specified"}
-```
-</Section>
-
-<Tab language="cURL">
-
-<Section type="request">
-
-```bash
-curl http://localhost:14265 
+ ## Example
+ 
+ ```bash
+ curl http://localhost:14265 
 -X POST 
 -H 'Content-Type: application/json' 
 -H 'X-IOTA-API-Version: 1' 
--d '{"command": "getTransactionsToApprove", "depth": "15", "reference": ["P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"]}'
-```
-</Section>
+-d '{ 
+"command": "getTransactionsToApprove", 
+"depth": "15", "reference": ["OMDHDIQXEPWTHXZAGPECFLXZOHAF9ATAZLFCDSHKDRZEYNBWZVIEFSTSYZGPSSINIMQTVOXMWFRVHHEQOCPLQMHRPUDPBLVWJPDAKETKXWHGCLMEYCDTUPTGAYEOZXHVOMUUWAOC9CWCVHUENLUGSCRQJZLEETKIUP", "MIDALUUWWMKI9WSTEECTUQGSXVJTLG9OOIQEGGIMXUTLPDUTO99KGIWPQSBQITSNYETMKKQGICYOOHS9ILMNNQLETM9NKYAXJFLRBRWDKFUJWRBFOETJQWYQSJRHXBIXKUMFM9EQBSVDOGWUUOZSJKJTWGYOIEETHG"]}'
+ ```
 
-<Section type="response">
+### Response - 200
 
-```json
-{"duration": "322", "branchTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "trunkTransaction": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999"}
-```
-</Section>
-
-<Section type="error">
+The following is an example of the response. Note: The response object shown here may be truncated for brevity. All of the properties will be returned from an actual call.
 
 ```json
-{"error": "'command' parameter has not been specified"}
+{"duration": "860", "trunkTransaction": "DLHUCKA9ELMJYDIANQ9NMKKAV9WCSSJUCZJYJUACWYK9TIPAJFUZFBYM9GDYRJYYIXRKEETXNNVKJ9DAF", "branchTransaction": "TR9OSODVMHTYZRI9ILBWUPGHJNAJOV9GCURXQJUVPSKRHHGBZGVUZIFZQEUYJKVCURK9HRFIOKKXWEKEC"}
 ```
-</Section>
-</Tabs>
 
+### Response - 400
 
+A node returns this for various reasons. These are the most common ones:
+* Invalid API Version
+* The maximal number of characters the body of an API call is exceeded
+* The command contains invalid parameters
 
-***
-	
-|Parameters | Description |
-|--|--|
-| depth | Number of bundles to go back to determine the transactions for approval. |
-| reference | Hash of transaction to start random-walk from, used to make sure the tips returned reference a given transaction in their past. |
+```json
+{
+  "duration": 15,
+  "error": "Error specific information"
+}
+```
 
-***
+### Response - 401
 
-Returns [GetTransactionsToApproveResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/GetTransactionsToApproveResponse.java)
+```json
+{
+  "duration": 15,
+  "error": "COMMAND getTransactionsToApprove is not available on this node"
+}
+```
 
-|Return | Description |
-|--|--|
-| duration | The duration it took to process this command in milliseconds |
-| branchTransaction | The branch transaction |
-| trunkTransaction | The trunk transaction |
-***
+### Response - 500
+
+```json
+{
+  "duration": 15,
+  "exception": "Internal server error message"
+}
+```

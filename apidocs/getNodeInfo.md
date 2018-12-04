@@ -1,148 +1,102 @@
 
----
-### [getNodeInfo](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/API.java#L716)
- [AbstractResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) getNodeInfoStatement()
+# [getNodeInfo](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/API.java#L965)
+ [AbstractResponse](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) getNodeInfoStatement()
 
-Returns information about your node.
+Returns information about this node.
 
-<Tabs> 
+> **Important note:** This API is currently in Beta and is subject to change. Use of these APIs in production applications is not supported.
 
-<Tab language="Python">
+## Request
 
-<Section type="request">
+## Request headers
 
-```Python
-import urllib2
-import json
+| Header       | Value | Required or Optional |
+|:---------------|:--------|:--------|
+| X-IOTA-API-Version | 1 | Required |
+| Content-Type | application/json | Optional |
+| Authorization  | Bearer {token} | Optional  |
 
-command = {"command": "getNodeInfo"}
+## Responses
 
-stringified = json.dumps(command)
+If successful, this method returns a `200 OK` response code and [GetNodeInfoResponse](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/GetNodeInfoResponse.java) in the body.
 
-headers = {
-    'content-type': 'application/json',
-    'X-IOTA-API-Version': '1'
-}
+| Return type | Description |
+|--|--|
+| Integer duration | The duration it took to process this command in milliseconds |
+| String appName | Name of the IOTA software you're currently using. (IRI stands for IOTA Reference Implementation) |
+| String appVersion | The version of the IOTA software this node is running. |
+| int jreAvailableProcessors | Available cores for JRE on this node. |
+| long jreFreeMemory | The amount of free memory in the Java Virtual Machine. |
+| String jreVersion | The JRE version this node runs on |
+| long jreMaxMemory | The maximum amount of memory that the Java virtual machine will attempt to use. |
+| long jreTotalMemory | The total amount of memory in the Java virtual machine. |
+| String latestMilestone | The hash of the latest transaction that was signed off by the coordinator. |
+| int latestMilestoneIndex | Index of the [latestMilestone](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/GetNodeInfoResponse.java#L53) |
+| String latestSolidSubtangleMilestone | The hash of the latest transaction which is solid and is used for sending transactions.   For a milestone to become solid, your local node must approve the subtangle of coordinator-approved transactions,    and have a consistent view of all referenced transactions. |
+| int latestSolidSubtangleMilestoneIndex | Index of the [latestSolidSubtangleMilestone](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/GetNodeInfoResponse.java#L65) |
+| int milestoneStartIndex | The start index of the milestones.   This index is encoded in each milestone transaction by the coordinator |
+| int neighbors | Number of neighbors this node is directly connected with. |
+| int packetsQueueSize | The amount of transaction packets which are currently waiting to be broadcast. |
+| long time | The difference, measured in milliseconds, between the current time and midnight, January 1, 1970 UTC |
+| int tips | Number of tips in the network. |
+| int transactionsToRequest | When a node receives a transaction from one of its neighbors,   this transaction is referencing two other transactions t1 and t2 (trunk and branch transaction).   If either t1 or t2 (or both) is not in the node's local database,   then the transaction hash of t1 (or t2 or both) is added to the queue of the "transactions to request".  At some point, the node will process this queue and ask for details about transactions in the   "transaction to request" queue from one of its neighbors.   This number represents the amount of "transaction to request" |
+| String[] features | Every node can have features enabled or disabled.   This list will contain all the names of the features of a node as specified in [Feature](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/Feature.java). |
+| String coordinatorAddress | The address of the Coordinator being followed by this node. |
 
-request = urllib2.Request(url="http://localhost:14265", data=stringified, headers=headers)
-returnData = urllib2.urlopen(request).read()
+## Example  
 
-jsonData = json.loads(returnData)
+### Request
 
-print jsonData
-```
-</Section>
+The following is an example of the request.
 
-<Section type="response">
-
-```json
-{"duration": "412", "appName": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "appVersion": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "jreAvailableProcessors": "686", "jreFreeMemory": "missing_data", "jreMaxMemory": "missing_data", "jreTotalMemory": "missing_data", "jreVersion": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "latestMilestone": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "latestMilestoneIndex": "399", "latestSolidSubtangleMilestone": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "latestSolidSubtangleMilestoneIndex": "196", "milestoneStartIndex": "517", "neighbors": "137", "packetsQueueSize": "163", "time": "missing_data", "tips": "178", "transactionsToRequest": "862"}
-```
-</Section>
-
-<Section type="error">
-
-```json
-{"error": "'command' parameter has not been specified"}
-```
-</Section>
-
-<Tab language="NodeJS">
-
-<Section type="request">
-
-```javascript
-var request = require('request');
-
-var command = {"command": "getNodeInfo"}
-
-var options = {
-  url: 'http://localhost:14265',
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-		'X-IOTA-API-Version': '1',
-    'Content-Length': Buffer.byteLength(JSON.stringify(command))
-  },
-  json: command
-};
-
-request(options, function (error, response, data) {
-  if (!error && response.statusCode == 200) {
-    console.log(data);
-  }
-});
-```
-</Section>
-
-<Section type="response">
-
-```json
-{"duration": "194", "appName": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "appVersion": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "jreAvailableProcessors": "478", "jreFreeMemory": "missing_data", "jreMaxMemory": "missing_data", "jreTotalMemory": "missing_data", "jreVersion": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "latestMilestone": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "latestMilestoneIndex": "754", "latestSolidSubtangleMilestone": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "latestSolidSubtangleMilestoneIndex": "390", "milestoneStartIndex": "997", "neighbors": "616", "packetsQueueSize": "109", "time": "missing_data", "tips": "76", "transactionsToRequest": "219"}
-```
-</Section>
-
-<Section type="error">
-
-```json
-{"error": "'command' parameter has not been specified"}
-```
-</Section>
-
-<Tab language="cURL">
-
-<Section type="request">
-
-```bash
-curl http://localhost:14265 
+ ## Example
+ 
+ ```bash
+ curl http://localhost:14265 
 -X POST 
 -H 'Content-Type: application/json' 
 -H 'X-IOTA-API-Version: 1' 
--d '{"command": "getNodeInfo"}'
-```
-</Section>
+-d '{ 
+"command": "getNodeInfo", 
+}'
+ ```
 
-<Section type="response">
+### Response - 200
 
-```json
-{"duration": "782", "appName": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "appVersion": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "jreAvailableProcessors": "253", "jreFreeMemory": "missing_data", "jreMaxMemory": "missing_data", "jreTotalMemory": "missing_data", "jreVersion": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "latestMilestone": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "latestMilestoneIndex": "609", "latestSolidSubtangleMilestone": "P9KFSJVGSPLXAEBJSHWFZLGP9GGJTIO9YITDEHATDTGAFLPLBZ9FOFWWTKMAZXZHFGQHUOXLXUALY9999", "latestSolidSubtangleMilestoneIndex": "800", "milestoneStartIndex": "315", "neighbors": "964", "packetsQueueSize": "486", "time": "missing_data", "tips": "964", "transactionsToRequest": "868"}
-```
-</Section>
-
-<Section type="error">
+The following is an example of the response. Note: The response object shown here may be truncated for brevity. All of the properties will be returned from an actual call.
 
 ```json
-{"error": "'command' parameter has not been specified"}
+{"duration": "239", "appName": "appname", "appVersion": "appversion", "jreAvailableProcessors": "670", "jreFreeMemory": "3G", "jreVersion": "jreversion", "jreMaxMemory": "2G", "jreTotalMemory": "2G", "latestMilestone": "ASZUFGCDBIC9FJTRXNZACRFIJCBF9SILXMSZN9UATUWWKVVLGCMBCOYXIOOOKKHMDUZKZUFJISKLXHQXFFYCWETBPTFDITLDHZKLINPIENYWLNUUPKIJTUVFUDXTTGMNSUOJAMJJPNKLLMEOIGHLPQESEFLEKQJ9GV", "latestMilestoneIndex": "737", "latestSolidSubtangleMilestone": "XTWXVHHJYL9LSODZKPMDSUZNPUVWYTRQGJEHUWNSBWHMHSKGWYQAQI9FVMDBLNBZTEDLMFPFQCVFFWFFDDNAYZDMCQBSUETXTPQTWESTRCWJJEEBQSTLUDIWNAXRMTBJTCGIZQGKVAPESMEDTAVAIRBKAAKVZSUZQK", "latestSolidSubtangleMilestoneIndex": "326", "milestoneStartIndex": "656", "neighbors": "670", "packetsQueueSize": "680", "time": "time", "tips": "501", "transactionsToRequest": "875", "features": ["features", "features"], "coordinatorAddress": "MJDHGYVFAJGCLYVTYUXKGU9FTVPSTSAKUGDZSKSVWZPVORANHMJKVIBMYSNTCJOLAGQDHSYKWHRCS9SCZWIIYHWECTRGQXKTRCNKQABZXKYPHHJVGSGPMGZQVEEW9DZPOHPVLNBZSFIBFJWDQPUZTMARYTPLPQOHNU"}
 ```
-</Section>
-</Tabs>
 
+### Response - 400
 
+A node returns this for various reasons. These are the most common ones:
+* Invalid API Version
+* The maximal number of characters the body of an API call is exceeded
+* The command contains invalid parameters
 
+```json
+{
+  "duration": 15,
+  "error": "Error specific information"
+}
+```
 
+### Response - 401
 
-***
+```json
+{
+  "duration": 15,
+  "error": "COMMAND getNodeInfo is not available on this node"
+}
+```
 
-Returns [GetNodeInfoResponse](https://github.com/iotaledger/iri/blob/dev/src/main/java/com/iota/iri/service/dto/GetNodeInfoResponse.java)
+### Response - 500
 
-|Return | Description |
-|--|--|
-| duration | The duration it took to process this command in milliseconds |
-| appName | Name of the IOTA software you're currently using (IRI stands for IOTA Reference Implementation) |
-| appVersion | The version of the IOTA software you're currently running. |
-| jreAvailableProcessors | Available cores on your machine for JRE. |
-| jreFreeMemory | The amount of free memory in the Java Virtual Machine. |
-| jreMaxMemory | The maximum amount of memory that the Java virtual machine will attempt to use. |
-| jreTotalMemory | The total amount of memory in the Java virtual machine. |
-| jreVersion | The JRE version this node runs on |
-| latestMilestone | The hash of the latest transaction that was signed off by the coordinator. |
-| latestMilestoneIndex | Index of the latest milestone. |
-| latestSolidSubtangleMilestone | The hash of the latest transaction which is solid and is used for sending transactions. For a milestone to become solid your local node must basically approve the subtangle of coordinator-approved transactions, and have a consistent view of all referenced transactions. |
-| latestSolidSubtangleMilestoneIndex | Index of the latest solid subtangle. |
-| milestoneStartIndex | Gets the start milestone index |
-| neighbors | Number of neighbors you are directly connected with. |
-| packetsQueueSize | Packets which are currently queued up. |
-| time | Current UNIX timestamp. |
-| tips | Number of tips in the network. |
-| transactionsToRequest | When a node receives a transaction from one of its neighbors, this transaction is referencing two other transactions t1 and t2 (trunk and branch transaction). If either t1 or t2 (or both) is not in the node's local database, then the transaction hash of t1 (or t2 or both) is added to the queue of the "transactions to request". At some point, the node will process this queue and ask for details about transactions in the "transaction to request" queue from one of its neighbors. By this means, nodes solidify their view of the tangle (i.e. filling in the unknown parts). |
-***
+```json
+{
+  "duration": 15,
+  "exception": "Internal server error message"
+}
+```

@@ -2,7 +2,7 @@
 # [getTrytes](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/API.java#L773)
  [AbstractResponse](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) getTrytesStatement(List<String> hashes)
 
-Returns the raw transaction data (trytes) of a specific transaction.  These trytes can then be easily converted into the actual transaction object.  See utility and [Transaction](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/model/persistables/Transaction.java) functions in an IOTA library for more details.
+Returns the raw transaction data (trytes) of a specific transaction. These trytes can then be easily converted into the actual transaction object. See utility and [Transaction](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/model/persistables/Transaction.java) functions in an IOTA library for more details.
 
 > **Important note:** This API is currently in Beta and is subject to change. Use of these APIs in production applications is not supported.
 
@@ -28,7 +28,7 @@ If successful, this method returns a `200 OK` response code and [GetTrytesRespon
 | Return type | Description |
 |--|--|
 | Integer duration | The duration it took to process this command in milliseconds |
-| String[] trytes | The raw transaction data (trytes) of the specified transactions.  These trytes can then be easily converted into the actual transaction object.   See library functions as to how to transform back to a [Transaction](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/model/persistables/Transaction.java). |
+| String[] trytes | The raw transaction data (trytes) of the specified transactions. These trytes can then be easily converted into the actual transaction object.  See library functions as to how to transform back to a [Transaction](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/model/persistables/Transaction.java). |
 
 ## Example  
 
@@ -45,7 +45,7 @@ The following is an example of the request.
 -H 'X-IOTA-API-Version: 1' 
 -d '{ 
 "command": "getTrytes", 
-"hashes": ["BIUZIDHKCEHM9IYB9LMMLMJVVNZTFQDLUKIETXLPSTZLBGMIEHCMUITXMSXCUTN9RXNUDLEZ9HRDL9BHE", "WAQRYLLJFWZMHJDSDQQOCDBHZUHQEITWJHYXGJORQBYUSRFYLVXV9W9BRTACOCKSHRHVIUFLHBBOLJNHQ"]}'
+"hashes": ["NGDFRIHOOS9J9YBQCDSFJZJKNSAJTNFKSXXEZWPZQSLRTYQDNX9UCGJHU9OZGFATCCQSGSFUZLLET9LID", "MUIYDLYHCAYGYK9IPVQX9GIHIWWCATAJ9BNFPVKZHZOSXAWVHEHHMSVEVTNRJVGCGEMSNI9ATUXFKPZRQ"]}'
  ```
 
 ### Response - 200
@@ -53,7 +53,7 @@ The following is an example of the request.
 The following is an example of the response. Note: The response object shown here may be truncated for brevity. All of the properties will be returned from an actual call.
 
 ```json
-{"duration": "817", "trytes": ["NAYXOPCOKUPIHSLRGXXQHTUVX99OY9YRAYI9ZFLOMOCUC9RYGOXMGFCU9XGILU9YRYCNOEKIGGPVVESKZRWGHQYWRYQCPKXKZAJNPNARMXDDTDGLNQUNIRNOAMVAJGYUGBYKSBFUU9BUHC9OCGSTZCJNCSQZPACYBZ", "UXUD9IYVRPSJYGCXVQBIIBSCI9AWGDCHUKSVPXMZMXLIVFWMZIITPXRRLLDBGQKB9ZXWPSPIOSXA9XJSSJSXDGDKLVIOLAAQBDINAXDZUYQUPZUBJH9S9HJHLKWZNQKBDW9ZCDGNYRL9C99ZWPXMIDSLAUWTGPECID"]}
+{"duration": "285", "trytes": ["JJSLJFJD9HMHHMKAJNRODFHUN ... KAKNYLPTXNNB99ITPEVQALVJL", "GOKINESKRDOQYSBMDZURJUJ9M ... QAJIDBNKTUNZ9EZVDJTLPWSQG"]}
 ```
 
 ### Response - 400

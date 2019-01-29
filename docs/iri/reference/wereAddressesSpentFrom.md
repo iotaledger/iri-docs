@@ -2,7 +2,7 @@
 # [wereAddressesSpentFrom](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/API.java#L533)
  [AbstractResponse](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) wereAddressesSpentFromStatement(List<String> addresses)
 
-Check if a list of addresses was ever spent from, in the current epoch, or in previous epochs.  If an address has a pending transaction, it is also marked as spend.
+Check if a list of addresses was ever spent from, in the current epoch, or in previous epochs. If an address has a pending transaction, it is also marked as spend.
 
 > **Important note:** This API is currently in Beta and is subject to change. Use of these APIs in production applications is not supported.
 
@@ -28,7 +28,7 @@ If successful, this method returns a `200 OK` response code and [WereAddressesSp
 | Return type | Description |
 |--|--|
 | Integer duration | The duration it took to process this command in milliseconds |
-| boolean[] states | States of the specified addresses in Boolean  Order of booleans is equal to order of the supplied addresses. |
+| boolean[] states | States of the specified addresses in Boolean Order of booleans is equal to order of the supplied addresses. |
 
 ## Example  
 
@@ -45,7 +45,7 @@ The following is an example of the request.
 -H 'X-IOTA-API-Version: 1' 
 -d '{ 
 "command": "wereAddressesSpentFrom", 
-"addresses": ["JDLNPFJXBTQIKFNCQJDDIFLSIJPPUTBOAUQBWRRFRMQHGFMZCEKVJBKFHDJSINLJDRPK9H9ANWVEKKDA9VJOGMGBFMEGLXQMAVXDQEJUY9SXWKWYT9FEKQDO9RTTSDJCVHUXKLLQLZQEGXEBGLKSOAICBYRRQOVVTA", "VQMNGENVJLOXXWLDBMAYJNRTRZVOLVWFDJXFEZBJFRRVENOIVG9HXV9KDEJGGZBLJJCBQBAZGRMASRBZVCLOOVNTVJWNZFKJAB99THHOSPWAYKHQZ9KMPFKBQNJRQERV9NAVVEQHX9FPCWQTCS9GBICPWZRXGKZBOQ"]}'
+"addresses": ["BKDEARVZVOWC9LZKTAB9AUSJSHCGVDQQGJUVNWHV9XNICMDFHEZOVLYRJYMHXKZZXSNRZRPYFSUFAFIP9", "JKPNBVXIFLISXOXLSGHFCYIY9WJHHMORXAOWUXTLGCCHCCKEBHVBWSEEMBIYXMIEZ9FCRHFOHJRANSGB9"]}'
  ```
 
 ### Response - 200
@@ -53,7 +53,7 @@ The following is an example of the request.
 The following is an example of the response. Note: The response object shown here may be truncated for brevity. All of the properties will be returned from an actual call.
 
 ```json
-{"duration": "733", "states": ["false", "false"]}
+{"duration": "740", "states": ["true", "false"]}
 ```
 
 ### Response - 400

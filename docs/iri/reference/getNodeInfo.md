@@ -27,20 +27,20 @@ If successful, this method returns a `200 OK` response code and [GetNodeInfoResp
 | String appVersion | The version of the IOTA software this node is running. |
 | int jreAvailableProcessors | Available cores for JRE on this node. |
 | long jreFreeMemory | The amount of free memory in the Java Virtual Machine. |
-| String jreVersion | The JRE version this node runs on |
 | long jreMaxMemory | The maximum amount of memory that the Java virtual machine will attempt to use. |
 | long jreTotalMemory | The total amount of memory in the Java virtual machine. |
+| String jreVersion | The JRE version this node runs on |
 | String latestMilestone | The hash of the latest transaction that was signed off by the coordinator. |
-| int latestMilestoneIndex | Index of the [latestMilestone](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/GetNodeInfoResponse.java#L53) |
-| String latestSolidSubtangleMilestone | The hash of the latest transaction which is solid and is used for sending transactions.   For a milestone to become solid, your local node must approve the subtangle of coordinator-approved transactions,    and have a consistent view of all referenced transactions. |
-| int latestSolidSubtangleMilestoneIndex | Index of the [latestSolidSubtangleMilestone](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/GetNodeInfoResponse.java#L65) |
-| int milestoneStartIndex | The start index of the milestones.   This index is encoded in each milestone transaction by the coordinator |
+| int latestMilestoneIndex | Index of the The hash of the latest transaction that was signed off by the coordinator. |
+| String latestSolidSubtangleMilestone | The hash of the latest transaction which is solid and is used for sending transactions.  For a milestone to become solid, your local node must approve the subtangle of coordinator-approved transactions,   and have a consistent view of all referenced transactions. |
+| int latestSolidSubtangleMilestoneIndex | Index of the The hash of the latest transaction which is solid and is used for sending transactions.  For a milestone to become solid, your local node must approve the subtangle of coordinator-approved transactions,   and have a consistent view of all referenced transactions. |
+| int milestoneStartIndex | The start index of the milestones.  This index is encoded in each milestone transaction by the coordinator |
 | int neighbors | Number of neighbors this node is directly connected with. |
 | int packetsQueueSize | The amount of transaction packets which are currently waiting to be broadcast. |
 | long time | The difference, measured in milliseconds, between the current time and midnight, January 1, 1970 UTC |
 | int tips | Number of tips in the network. |
-| int transactionsToRequest | When a node receives a transaction from one of its neighbors,   this transaction is referencing two other transactions t1 and t2 (trunk and branch transaction).   If either t1 or t2 (or both) is not in the node's local database,   then the transaction hash of t1 (or t2 or both) is added to the queue of the "transactions to request".  At some point, the node will process this queue and ask for details about transactions in the   "transaction to request" queue from one of its neighbors.   This number represents the amount of "transaction to request" |
-| String[] features | Every node can have features enabled or disabled.   This list will contain all the names of the features of a node as specified in [Feature](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/Feature.java). |
+| int transactionsToRequest | When a node receives a transaction from one of its neighbors,  this transaction is referencing two other transactions t1 and t2 (trunk and branch transaction).  If either t1 or t2 (or both) is not in the node's local database,  then the transaction hash of t1 (or t2 or both) is added to the queue of the "transactions to request". At some point, the node will process this queue and ask for details about transactions in the  "transaction to request" queue from one of its neighbors.  This number represents the amount of "transaction to request" |
+| String[] features | Every node can have features enabled or disabled.  This list will contain all the names of the features of a node as specified in [Feature](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/Feature.java). |
 | String coordinatorAddress | The address of the Coordinator being followed by this node. |
 
 ## Example  
@@ -66,7 +66,7 @@ The following is an example of the request.
 The following is an example of the response. Note: The response object shown here may be truncated for brevity. All of the properties will be returned from an actual call.
 
 ```json
-{"duration": "239", "appName": "appname", "appVersion": "appversion", "jreAvailableProcessors": "670", "jreFreeMemory": "3G", "jreVersion": "jreversion", "jreMaxMemory": "2G", "jreTotalMemory": "2G", "latestMilestone": "ASZUFGCDBIC9FJTRXNZACRFIJCBF9SILXMSZN9UATUWWKVVLGCMBCOYXIOOOKKHMDUZKZUFJISKLXHQXFFYCWETBPTFDITLDHZKLINPIENYWLNUUPKIJTUVFUDXTTGMNSUOJAMJJPNKLLMEOIGHLPQESEFLEKQJ9GV", "latestMilestoneIndex": "737", "latestSolidSubtangleMilestone": "XTWXVHHJYL9LSODZKPMDSUZNPUVWYTRQGJEHUWNSBWHMHSKGWYQAQI9FVMDBLNBZTEDLMFPFQCVFFWFFDDNAYZDMCQBSUETXTPQTWESTRCWJJEEBQSTLUDIWNAXRMTBJTCGIZQGKVAPESMEDTAVAIRBKAAKVZSUZQK", "latestSolidSubtangleMilestoneIndex": "326", "milestoneStartIndex": "656", "neighbors": "670", "packetsQueueSize": "680", "time": "time", "tips": "501", "transactionsToRequest": "875", "features": ["features", "features"], "coordinatorAddress": "MJDHGYVFAJGCLYVTYUXKGU9FTVPSTSAKUGDZSKSVWZPVORANHMJKVIBMYSNTCJOLAGQDHSYKWHRCS9SCZWIIYHWECTRGQXKTRCNKQABZXKYPHHJVGSGPMGZQVEEW9DZPOHPVLNBZSFIBFJWDQPUZTMARYTPLPQOHNU"}
+{"duration": "614", "appName": "appname", "appVersion": "appversion", "jreAvailableProcessors": "414", "jreFreeMemory": "6G", "jreMaxMemory": "4G", "jreTotalMemory": "2G", "jreVersion": "jreversion", "latestMilestone": "AVJFNHAJILEDMRMBQNWJWRLNXIPUBKPBYKRYUNQWGAHMTNNOEMTAHPMNOIXLGCPCJMJQVOQBVKYQR9KMW", "latestMilestoneIndex": "646", "latestSolidSubtangleMilestone": "SHTKGHAYNVLTHHORACPJZLLR9EOUXGXFCRCWXQSAJQYSDHL9TTZMSTHQBSOQCPRQWE9SXOUNMCLDAGCSJ", "latestSolidSubtangleMilestoneIndex": "415", "milestoneStartIndex": "6", "neighbors": "973", "packetsQueueSize": "195", "time": "time", "tips": "515", "transactionsToRequest": "708", "features": ["features", "features"], "coordinatorAddress": "VKFMNYGGDAJDLJIRBBWPGY9HHMQJKBC9YEAUUAMEJXLCQREFYLPUTNMPLJBCHNRCUJLWAQMDXUVYKNFNQ"}
 ```
 
 ### Response - 400

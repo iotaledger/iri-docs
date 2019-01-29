@@ -2,7 +2,7 @@
 # [broadcastTransactions](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/API.java#L1331)
  [AbstractResponse](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) broadcastTransactionsStatement(List<String> trytes)
 
-Broadcast a list of transactions to all neighbors.  The trytes to be used for this call should be valid, attached transaction trytes.  These trytes are returned by `attachToTangle`, or by doing proof of work somewhere else.
+Broadcast a list of transactions to all neighbors. The trytes to be used for this call should be valid, attached transaction trytes. These trytes are returned by `attachToTangle`, or by doing proof of work somewhere else.
 
 > **Important note:** This API is currently in Beta and is subject to change. Use of these APIs in production applications is not supported.
 
@@ -44,7 +44,7 @@ The following is an example of the request.
 -H 'X-IOTA-API-Version: 1' 
 -d '{ 
 "command": "broadcastTransactions", 
-"trytes": ["NWRCRHCQLQXQRCFRJLI9IDJIESSQGOMXYPOQINCBWTHEJMVWTCR9TYYGBFPKYJBBKSB9JTOGSKJLLQROYQKSU9CHEXAISLRKNYDCEDLUYSGRROMYPTZVSMIKPFFJCNFDQZHITVARJZUFLSODDVXHJUY9DNYLZUYVEW", "FODAPHLSAVGTZKWPUNMKZLURHCRVOE9GELLKHYDKMPRXIGSHKNBBMUJANGDZXPSDTCLYYBAQ9EOQRAKTZYRFQJRTULFYGYRXCYPXPXJY9HTTZXEWM9EDKZCBNTTEQCAJJCKWD9FBZCYGRHGRQRYJVGELNNKDHPGYKM"]}'
+"trytes": ["AALTENPIZTZWKTZSUEMMOXAEI ... NFRJNXUTHON9QECNI9PGHGFGV", "SR9BFGLTKTWFTLLPVNRAGSBZF ... Y9FOOFEGDATVIJCYMRKQWAULN"]}'
  ```
 
 ### Response - 200
@@ -52,7 +52,7 @@ The following is an example of the request.
 The following is an example of the response. Note: The response object shown here may be truncated for brevity. All of the properties will be returned from an actual call.
 
 ```json
-{"duration": "496"}
+{"duration": "326"}
 ```
 
 ### Response - 400

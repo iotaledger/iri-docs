@@ -2,7 +2,7 @@
 # [addNeighbors](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/API.java#L718)
  [AbstractResponse](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) addNeighborsStatement(List<String> uris)
 
-Temporarily add a list of neighbors to your node.  The added neighbors will not be available after restart.  Add the neighbors to your config file   or supply them in the `-n` command line option if you want to add them permanently.   The URI (Unique Resource Identification) for adding neighbors is:  **udp://IPADDRESS:PORT**
+Temporarily add a list of neighbors to your node. The added neighbors will not be available after restart. Add the neighbors to your config file  or supply them in the `-n` command line option if you want to add them permanently. The URI (Unique Resource Identification) for adding neighbors is: **udp://IPADDRESS:PORT**
 
 > **Important note:** This API is currently in Beta and is subject to change. Use of these APIs in production applications is not supported.
 
@@ -28,7 +28,7 @@ If successful, this method returns a `200 OK` response code and [AddedNeighborsR
 | Return type | Description |
 |--|--|
 | Integer duration | The duration it took to process this command in milliseconds |
-| int addedNeighbors | The amount of temporally added neighbors to this node.  Can be 0 or more. |
+| int addedNeighbors |  |
 
 ## Example  
 
@@ -53,7 +53,7 @@ The following is an example of the request.
 The following is an example of the response. Note: The response object shown here may be truncated for brevity. All of the properties will be returned from an actual call.
 
 ```json
-{"duration": "455", "addedNeighbors": "587"}
+{"duration": "983", "addedNeighbors": "636"}
 ```
 
 ### Response - 400

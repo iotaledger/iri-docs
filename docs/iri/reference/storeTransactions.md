@@ -2,7 +2,7 @@
 # [storeTransactions](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/API.java#L924)
  [AbstractResponse](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) storeTransactionsStatement(List<String> trytes)
 
-Stores transactions in the local storage.  The trytes to be used for this call should be valid, attached transaction trytes.  These trytes are returned by `attachToTangle`, or by doing proof of work somewhere else.
+Stores transactions in the local storage. The trytes to be used for this call should be valid, attached transaction trytes. These trytes are returned by `attachToTangle`, or by doing proof of work somewhere else.
 
 > **Important note:** This API is currently in Beta and is subject to change. Use of these APIs in production applications is not supported.
 
@@ -44,7 +44,7 @@ The following is an example of the request.
 -H 'X-IOTA-API-Version: 1' 
 -d '{ 
 "command": "storeTransactions", 
-"trytes": ["OMFBLOGDRIVOQFCOWKRKQQWQXOAGEZ9LS99XRULRFVFNAUG9IXPAG9YGNNBESILGTBVHXVSGKSNHLDBAA9DWIINHLMBI9TSBNHENOZWWYCCQBZMUCZSHXKDNMFPVNKDNZKYBNJCJTVIOMC9GTLJDN9XCEJFOVBESCQ", "TARAXQ9TCXP9UAW9GEWMJJDVIQMXCDKLFOAGXKYGCDNLSIUAFZUXJBZCLCWFTKYLMFJQIZNAJVTZFFBNYVEMSFRCCPPUGESOPLU9FUS99MEJITLWYFQMUVBTLXPJIRFBAFTEPGONSDYZTHVIJLZEUQLEOV9EUGIVCN"]}'
+"trytes": ["RKDQGFBD9W9VKDEJDEXUNJBAG ... EWYCHEPCOSP9RPKLBERYVDZAM", "VBOMOUQIAIGKEJWJKDXZTWVEC ... DROZAYSJLDWLMHTXEOHYV9ML9"]}'
  ```
 
 ### Response - 200
@@ -52,7 +52,7 @@ The following is an example of the request.
 The following is an example of the response. Note: The response object shown here may be truncated for brevity. All of the properties will be returned from an actual call.
 
 ```json
-{"duration": "642"}
+{"duration": "465"}
 ```
 
 ### Response - 400

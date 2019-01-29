@@ -2,7 +2,10 @@
 # [checkConsistency](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/API.java#L636)
  [AbstractResponse](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) checkConsistencyStatement(List<String> transactionsList)
 
-Checks the consistency of the transactions.  Marks state as false on the following checks:    * Missing a reference transaction<br/>  * Invalid bundle<br/>  * Tails of tails are invalid<br/>      If a transaction does not exist, or it is not a tail, an [ErrorResponse](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/ErrorResponse.java) is returned.
+Checks the consistency of the transactions. Marks state as false on the following checks:  * Missing a reference transaction
+ * Invalid bundle
+ * Tails of tails are invalid
+   If a transaction does not exist, or it is not a tail, an [ErrorResponse](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/ErrorResponse.java) is returned.
 
 > **Important note:** This API is currently in Beta and is subject to change. Use of these APIs in production applications is not supported.
 
@@ -28,7 +31,7 @@ If successful, this method returns a `200 OK` response code and [CheckConsistenc
 | Return type | Description |
 |--|--|
 | Integer duration | The duration it took to process this command in milliseconds |
-| boolean state | The state of all the provided tails, which is set to  on the following checks<br/>    * Missing a reference transaction<br/>  * Invalid bundle<br/>  * Tails of tails are invalid<br/>   |
+| boolean state | The state of all the provided tails, which is set to  on the following checks  * Missing a reference transaction * Invalid bundle * Tails of tails are invalid  |
 | String info | If state is , this provides information on the cause of the inconsistency. |
 
 ## Example  
@@ -46,7 +49,7 @@ The following is an example of the request.
 -H 'X-IOTA-API-Version: 1' 
 -d '{ 
 "command": "checkConsistency", 
-"transactionsList": ["OLQXVJKG9ROKALQOGJIAFVLEWGLJPEPXDEEUWJVXEPDPDZPYMGAPSHBWLDFG9JFGGTRJOOXSVNJZFRGVK", "CHTRAHOGLFDXALMSF9QGXJQDXHZPJTTDZEKWAUCQA9AUBEGII9GQLVCYY9MJVQZFZA9S9CXCZQA9GGVHV"]}'
+"transactionsList": ["SHHXOGUUYSCCFVMCZYCNBJIMGEEIBEPCCEUXKXF9ROYQNJFFGEHOOHDLNDN9XAWXYBVYYARTPRAFFOJN9", "QMMDUXSUOSITO9JVPCJWHIQRVDBPKKZGTSYOKLUNMSM9WIXLLJLFEMKUPEO9MOFDYRDC9GMRRETRGAWJD"]}'
  ```
 
 ### Response - 200
@@ -54,7 +57,7 @@ The following is an example of the request.
 The following is an example of the response. Note: The response object shown here may be truncated for brevity. All of the properties will be returned from an actual call.
 
 ```json
-{"duration": "975", "state": "false", "info": "LPBFOQGEPNRPRVXMYQWWKAAV9MLKBZNKIOAEVCMJGZVIJOTOYCHN9BDTTRDRSELYROUI9UOFXJPMJEDFX"}
+{"duration": "172", "state": "true", "info": "VYVBPWTBHHSVJIDXNPNLABSUAPUJJIXMEREPUKOXFHEJVAYANZUSIDARKXTCLFVWWGYESUOVEMQBHCKOV"}
 ```
 
 ### Response - 400

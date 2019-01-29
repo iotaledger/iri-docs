@@ -2,7 +2,7 @@
 # [getTransactionsToApprove](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/API.java#L841)
  [AbstractResponse](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) getTransactionsToApproveStatement(int depth, Optional<[Hash](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/model/Hash.java)> reference)
 
-Tip selection which returns `trunkTransaction` and `branchTransaction`.  The input value `depth` determines how many milestones to go back for finding the transactions to approve.  The higher your `depth` value, the more work you have to do as you are confirming more transactions.  If the `depth` is too large (usually above 15, it depends on the node's configuration) an error will be returned.  The `reference` is an optional hash of a transaction you want to approve.  If it can't be found at the specified `depth` then an error will be returned.
+Tip selection which returns `trunkTransaction` and `branchTransaction`. The input value `depth` determines how many milestones to go back for finding the transactions to approve. The higher your `depth` value, the more work you have to do as you are confirming more transactions. If the `depth` is too large (usually above 15, it depends on the node's configuration) an error will be returned. The `reference` is an optional hash of a transaction you want to approve. If it can't be found at the specified `depth` then an error will be returned.
 
 > **Important note:** This API is currently in Beta and is subject to change. Use of these APIs in production applications is not supported.
 
@@ -29,8 +29,8 @@ If successful, this method returns a `200 OK` response code and [GetTransactions
 | Return type | Description |
 |--|--|
 | Integer duration | The duration it took to process this command in milliseconds |
-| String trunkTransaction | The trunk transaction tip to reference in your transaction or bundle |
 | String branchTransaction | The branch transaction tip to reference in your transaction or bundle |
+| String trunkTransaction | The trunk transaction tip to reference in your transaction or bundle |
 
 ## Example  
 
@@ -47,7 +47,7 @@ The following is an example of the request.
 -H 'X-IOTA-API-Version: 1' 
 -d '{ 
 "command": "getTransactionsToApprove", 
-"depth": "15", "reference": ["OMDHDIQXEPWTHXZAGPECFLXZOHAF9ATAZLFCDSHKDRZEYNBWZVIEFSTSYZGPSSINIMQTVOXMWFRVHHEQOCPLQMHRPUDPBLVWJPDAKETKXWHGCLMEYCDTUPTGAYEOZXHVOMUUWAOC9CWCVHUENLUGSCRQJZLEETKIUP", "MIDALUUWWMKI9WSTEECTUQGSXVJTLG9OOIQEGGIMXUTLPDUTO99KGIWPQSBQITSNYETMKKQGICYOOHS9ILMNNQLETM9NKYAXJFLRBRWDKFUJWRBFOETJQWYQSJRHXBIXKUMFM9EQBSVDOGWUUOZSJKJTWGYOIEETHG"]}'
+"depth": "15", "reference": ["X9CMNUW9VGMIAS9STZBILGQLELAAIJOCUTYHYGVYSKEVYTEOZBHRUXE9GLUBXZTCHKGWON9IFX9RTJHMO", "VZWLUHRXWK9RLKLQYGEUGFVY9KADYWANKCWOFFRMHPSLCHMDYFVEKQZJQPCHISHFWXVHSHAOPKIBNSNKN"]}'
  ```
 
 ### Response - 200
@@ -55,7 +55,7 @@ The following is an example of the request.
 The following is an example of the response. Note: The response object shown here may be truncated for brevity. All of the properties will be returned from an actual call.
 
 ```json
-{"duration": "860", "trunkTransaction": "DLHUCKA9ELMJYDIANQ9NMKKAV9WCSSJUCZJYJUACWYK9TIPAJFUZFBYM9GDYRJYYIXRKEETXNNVKJ9DAF", "branchTransaction": "TR9OSODVMHTYZRI9ILBWUPGHJNAJOV9GCURXQJUVPSKRHHGBZGVUZIFZQEUYJKVCURK9HRFIOKKXWEKEC"}
+{"duration": "457", "branchTransaction": "LUJRVNSDLHSDCX9MVSBZFWZHVRDXRDKZTOTRFMGKSMZGZZUFRFOUHNFC9HZMWQHYONGMOWBMUVEFRADOS", "trunkTransaction": "CENBHDNCWLFDKSYZUTR9TZBMTANCGGGJJWE9M9JIWZKXELGVZSZSPFITXJUKF9PYKYSCQEWEAXMUMQMHH"}
 ```
 
 ### Response - 400

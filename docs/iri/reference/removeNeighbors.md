@@ -2,7 +2,7 @@
 # [removeNeighbors](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/API.java#L749)
  [AbstractResponse](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/AbstractResponse.java) removeNeighborsStatement(List<String> uris)
 
-Temporarily removes a list of neighbors from your node.  The added neighbors will be added again after relaunching IRI.  Remove the neighbors from your config file or make sure you don't supply them in the -n command line option if you want to keep them removed after restart.   The URI (Unique Resource Identification) for removing neighbors is:  **udp://IPADDRESS:PORT**   Returns an [ErrorResponse](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/ErrorResponse.java) if the URI scheme is wrong
+Temporarily removes a list of neighbors from your node. The added neighbors will be added again after relaunching IRI. Remove the neighbors from your config file or make sure you don't supply them in the -n command line option if you want to keep them removed after restart. The URI (Unique Resource Identification) for removing neighbors is: **udp://IPADDRESS:PORT** Returns an [ErrorResponse](https://github.com/iotaledger/iri/blob/master/src/main/java/com/iota/iri/service/dto/ErrorResponse.java) if the URI scheme is wrong
 
 > **Important note:** This API is currently in Beta and is subject to change. Use of these APIs in production applications is not supported.
 
@@ -28,7 +28,7 @@ If successful, this method returns a `200 OK` response code and [RemoveNeighbors
 | Return type | Description |
 |--|--|
 | Integer duration | The duration it took to process this command in milliseconds |
-| int removedNeighbors | The amount of temporarily removed neighbors from this node.  Can be 0 or more. |
+| int removedNeighbors | The amount of temporarily removed neighbors from this node. Can be 0 or more. |
 
 ## Example  
 
@@ -53,7 +53,7 @@ The following is an example of the request.
 The following is an example of the response. Note: The response object shown here may be truncated for brevity. All of the properties will be returned from an actual call.
 
 ```json
-{"duration": "621", "removedNeighbors": "442"}
+{"duration": "823", "removedNeighbors": "508"}
 ```
 
 ### Response - 400
